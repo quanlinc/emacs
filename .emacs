@@ -31,9 +31,9 @@
 (load-theme 'tango-dark t)
 ;;Hightlight the current line
 (global-hl-line-mode 1)
-;(set-face-background 'highlight "#9966cc")
+(set-face-background 'highlight "#3e4446")
 (set-face-foreground 'highlight nil)
-(set-face-underline-p 'highlight t)
+(set-face-underline-p 'highlight nil)
 
 
 ;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words

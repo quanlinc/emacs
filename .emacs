@@ -1,29 +1,34 @@
-(add-to-list 'load-path "~/.emacs.d/")
 (setq debug-on-error t)
-
+(require 'package) 
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
 
 (defvar root-dir (file-name-directory load-file-name)
   "The root dir of Emacs configuration.")
 
-(defvar emacs-config-dir (concat root-dir ".emacs.d/config/")
+(defvar emacs-config-dir (concat root-dir "/.emacs.d/config/")
   "This directory houses all of the main configuration")
 
-(add-to-list 'load-path emacs-config-dir)
+(defvar emacs-site-lisp-dir (concat root-dir "/.emacs.d/site-lisp/"))
 
-;; Load modules
-;(require 'my-auto-complete)
+(add-to-list 'load-path emacs-config-dir)
+(add-to-list 'load-path emacs-site-lisp-dir)
+
+
+
+(require 'my-auto-complete)
 (require 'my-defaults)
 (require 'my-desktop)
 (require 'my-mmm)
-;(require 'my-projectile)
-
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
+(require 'my-projectile)
+(require 'my-javascript)
+(require 'my-keybindings)
 
 (load-theme 'tango-dark t)
-
 ;;Hightlight the current line
 (global-hl-line-mode 1)
 ;(set-face-background 'highlight "#9966cc")
@@ -75,15 +80,9 @@
 ;;(load-file "~/.emacs.d/color-theme/themes/zenburn-theme.el")
 ;;(require 'zenburn-theme)
 ;; Allows Emacs to recognize cygwin paths
-(require 'cygwin-mount)
-(cygwin-mount-activate)
+;;(require 'cygwin-mount)
+;;(cygwin-mount-activate)
 
-;; Set default file coding to be Unix style (needed in Cygwin)
-(setq default-buffer-file-coding-system 'undecided-unix)
-
-(setq max-specpdl-size 2000)
-
-;; Display the column number on the status line
 (setq column-number-mode "true")
 
 (setq global-font-lock-mode "true")
@@ -202,49 +201,13 @@
   (interactive)
   (find-tag "" t))
 
-;; Bind the CTRL plus . "dot" key to go to next tag
-(global-set-key (kbd "C-.") 'find-next-tag)
-
-;; SET UP FUNCTION KEYS
-;;   CURRENTLY USED KEYS ARE: [F1]-[F12]  ([F2] defined below)
-(global-set-key [f1] 'set-mark-command)
-(global-set-key [f2] 'copy-region-as-kill)
-(global-set-key [f3] 'undo)
-(global-set-key [f4] 'replace-string)
-(global-set-key [f5] 'query-replace)
-(global-set-key [f6] 'isearch-forward-regexp)
-
-;;(global-set-key [f7] 'isearch-backward-regexp) f7 has been mapped to expand templates
-(global-set-key [f8] 'replace-regexp)
-(global-set-key [f9] 'goto-line)
-(global-set-key [f10] 'forward-sexp)
-(global-set-key [f11] 'backward-sexp)
-;;(global-set-key [f12] 'delete-char)
-(global-set-key [f13] 'beginning-of-buffer)
-(global-set-key [f14] 'end-of-buffer)
-
-;; Set the key bindings for the console version of emacs
-(global-set-key [kp-f1] 'set-mark-command)
-(global-set-key [kp-f2] 'copy-region-as-kill)
-(global-set-key [kp-f3] 'undo)
-(global-set-key [kp-f4] 'replace-string)
-(global-set-key [kp-f5] 'query-replace)
-(global-set-key [kp-f6] 'isearch-forward-regexp)
-(global-set-key [kp-f8] 'replace-regexp)
-(global-set-key [kp-f9] 'goto-line)
-(global-set-key [kp-f10] 'forward-sexp)
-(global-set-key [kp-f11] 'backward-sexp)
-(global-set-key [kp-f12] 'delete-char)
-(global-set-key [kp-f13] 'beginning-of-buffer)
-(global-set-key [kp-f14] 'end-of-buffer)
-
 ;; Abbreviations
 ;;(setq save-abbrevs t)              ;; save abbrevs when files are saved
                                      ;; you will be asked before the abbreviations are saved
 ;;(quietly-read-abbrev-file)       ;; reads the abbreviations file on startup
 
 ;; Load C++ templates - execute templates using F7 key
-(load-file '"~/.emacs.d/tempo_skeletons.el")
+;;(load-file '"~/.emacs.d/tempo_skeletons.el")
 
 
 ;;(normal-erase-is-backspace-mode t)
@@ -260,3 +223,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+

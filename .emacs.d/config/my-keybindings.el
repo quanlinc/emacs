@@ -35,4 +35,14 @@
 (global-set-key [kp-f13] 'beginning-of-buffer)
 (global-set-key [kp-f14] 'end-of-buffer)
 
+(global-set-key (kbd "C-M-s") #'flx-isearch-forward)
+(global-set-key (kbd "C-M-r") #'flx-isearch-backward)
+(global-set-key (kbd "C-c SPC") 'ace-jump-word-mode)
+;(global-set-key (kbd "C-u C-c SPC") 'ace-jump-char-mode)
+;(global-set-key (kbd "C-u C-u C-c SPC") 'ace-jump-line-mode)
+
+;; bind Alt/Meta + n/p to scroll page up/down
+(global-set-key "\M-n" (lambda() (interactive) (scroll-up 1)))
+(global-set-key "\M-p" (lambda() (interactive) (scroll-down 1)))
+
 (provide 'my-keybindings)

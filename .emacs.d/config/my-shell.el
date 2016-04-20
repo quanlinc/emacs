@@ -1,3 +1,12 @@
+;; Shell stuff
+(setq binary-process-input t) 
+(setq w32-quote-process-args ?\") 
+(setq shell-file-name "bash")
+(setenv "SHELL" shell-file-name) 
+(setq explicit-shell-file-name shell-file-name) 
+(setq explicit-sh-args '("-login" "-i"))
+
+
 ;; Emacs shell working directory tracking
   (defun track-shell-directory/procfs ()
     (shell-dirtrack-mode 0)

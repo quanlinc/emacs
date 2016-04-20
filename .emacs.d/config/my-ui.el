@@ -31,8 +31,23 @@
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
+(display-time)
+(setq transient-mark-mode "true")
+(setq global-font-lock-mode "true")
 
 ;; cursor settings
 (set-cursor-color "grey60")
+
+;;Hightlight the current line
+(global-hl-line-mode 1)
+(set-face-background 'highlight "#3e4446")
+(set-face-foreground 'highlight nil)
+(set-face-underline-p 'highlight nil)
+
+;; If using Emacs under windows
+;; Allows Emacs to recognize cygwin paths
+;;(require 'cygwin-mount)
+;;(cygwin-mount-activate)
+
 
 (provide 'my-ui)

@@ -3,7 +3,7 @@
 (add-to-list 'auto-mode-alist '(".less$" . css-mode))
 (add-to-list 'auto-mode-alist '(".css$" . css-mode))
 (add-to-list 'auto-mode-alist '(".html$" . angular-html-mode))
-(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
+;;(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
 (add-to-list 'auto-mode-alist '(".java$" . java-mode))
 (add-to-list 'auto-mode-alist '(".htm$" . html-mode))
 

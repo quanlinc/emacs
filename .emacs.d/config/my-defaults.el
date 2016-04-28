@@ -105,5 +105,11 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;;window move default key binding
+(windmove-default-keybindings)
+;; when cursor is on edge, move to the other side, as in a torus space
+(setq windmove-wrap-around t)
+
+
 (provide 'my-defaults)
 

@@ -1,7 +1,7 @@
 ;; Shell stuff
 (setq binary-process-input t) 
 (setq w32-quote-process-args ?\") 
-(setq shell-file-name "bash")
+(setq shell-file-name "zsh")
 (setenv "SHELL" shell-file-name) 
 (setq explicit-shell-file-name shell-file-name) 
 (setq explicit-sh-args '("-login" "-i"))

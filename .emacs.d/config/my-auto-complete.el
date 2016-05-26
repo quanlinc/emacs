@@ -9,4 +9,6 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
+;(ac-set-trigger-key "TAB")
+;(ac-set-trigger-key "<tab>")
 (provide 'my-auto-complete)

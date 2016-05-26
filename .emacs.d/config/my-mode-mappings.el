@@ -1,13 +1,15 @@
 ;;Javascript
 (add-to-list 'auto-mode-alist '(".js$" . js2-mode))
-(add-to-list 'auto-mode-alist '(".less$" . css-mode))
+(add-to-list 'auto-mode-alist '(".less$" . less-css-mode))
 (add-to-list 'auto-mode-alist '(".css$" . css-mode))
 (add-to-list 'auto-mode-alist '(".html$" . angular-html-mode))
 ;;(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
 (add-to-list 'auto-mode-alist '(".java$" . java-mode))
-(add-to-list 'auto-mode-alist '(".htm$" . html-mode))
+;;(add-to-list 'auto-mode-alist '(".htm$" . html-mode))
+;; org mode
+(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode))
 
-     (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 ;   To invoke html-helper-mode automatically on .html files, do this:
     ;; (setq auto-mode-alist (cons '("\\.html$" . html-mode) auto-mode-alist))
     ;; (setq auto-mode-alist (cons '("\\.htm$" . html-mode) auto-mode-alist))

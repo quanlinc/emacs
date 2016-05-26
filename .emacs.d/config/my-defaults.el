@@ -2,7 +2,6 @@
 
 ;; Allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard t)
-
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
 (setq auto-revert-verbose nil)
@@ -55,7 +54,7 @@
 (setq-default transient-mark-mode t)
 
 ;; smart indenting and pairing for all
-(electric-pair-mode nil)
+(electric-pair-mode t)
 (electric-indent-mode t)
 (electric-layout-mode t)
 
@@ -88,15 +87,16 @@
 (require 'tramp)
 ;; keep in mind known issues with zsh - see emacs wiki
 (setq tramp-default-method "ssh")
-(add-to-list 'tramp-default-proxies-alist
-             '(nil "\\`root\\'" "/ssh:%h:"))
-(add-to-list 'tramp-default-proxies-alist
-             '((regexp-quote (system-name)) nil nil))
+(setq tramp-default-user "root")
+;;(add-to-list 'tramp-default-proxies-alist
+;;             '(nil "\\`root\\'" "/ssh:%h:"))
+;;(add-to-list 'tramp-default-proxies-alist
+;;             '((regexp-quote (system-name)) nil nil))
 ;; Root access on local host: /sudo::<path-to-root-owned-file>
 ;; Root access on remote hosts: /sudo:root@remote-host:<path-to-root-owned-file>
 
 ;; auto-completion in minibuffer
-(icomplete-mode +1)
+(icomplete-mode 1)
 
 (winner-mode t)
 
@@ -110,6 +110,16 @@
 ;; when cursor is on edge, move to the other side, as in a torus space
 (setq windmove-wrap-around t)
 
+;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
+(global-subword-mode t)
+
+;; Abbreviations
+;;(setq save-abbrevs t)              ;; save abbrevs when files are saved
+                                     ;; you will be asked before the abbreviations are saved
+;;(quietly-read-abbrev-file)       ;; reads the abbreviations file on startup
+
+
+;;(normal-erase-is-backspace-mode t)
 
 (provide 'my-defaults)
 

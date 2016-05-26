@@ -37,12 +37,41 @@
 
 (global-set-key (kbd "C-M-s") #'flx-isearch-forward)
 (global-set-key (kbd "C-M-r") #'flx-isearch-backward)
-(global-set-key (kbd "C-c SPC") 'ace-jump-word-mode)
+;(global-set-key (kbd "C-c SPC") 'ace-jump-word-mode)
 ;(global-set-key (kbd "C-u C-c SPC") 'ace-jump-char-mode)
 ;(global-set-key (kbd "C-u C-u C-c SPC") 'ace-jump-line-mode)
-
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 ;; bind Alt/Meta + n/p to scroll page up/down
 (global-set-key "\M-n" (lambda() (interactive) (scroll-up 1)))
 (global-set-key "\M-p" (lambda() (interactive) (scroll-down 1)))
+;; keybinding for expand region
+(global-set-key (kbd "C-=") 'er/expand-region)
+;; console mode emacs has an issue with this keybinding
+
+(global-set-key (kbd "C-x g") 'magit-status)
+;; for console version of emacs, enable mouse scrolling
+;; (xterm-mouse-mode t)
+;; (setq mouse-wheel-follow-mouse 't)
+
+
+;; (defvar alternating-scroll-down-next t)
+;; (defvar alternating-scroll-up-next t)
+
+;; (defun alternating-scroll-down-line ()
+;;   (interactive "@")
+;;   (when alternating-scroll-down-next
+;;                                         ;      (run-hook-with-args 'window-scroll-functions )
+;;     (scroll-down-line))
+;;   (setq alternating-scroll-down-next (not alternating-scroll-down-next)))
+
+;; (defun alternating-scroll-up-line ()
+;;   (interactive "@")
+;;   (when alternating-scroll-up-next
+;;                                         ;      (run-hook-with-args 'window-scroll-functions)
+;;     (scroll-up-line))
+;;       (setq alternating-scroll-up-next (not alternating-scroll-up-next)))
+
+;; (global-set-key (kbd "<mouse-4>") 'alternating-scroll-down-line)
+;; (global-set-key (kbd "<mouse-5>") 'alternating-scroll-up-line)
 
 (provide 'my-keybindings)

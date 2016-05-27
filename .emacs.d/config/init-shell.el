@@ -51,4 +51,4 @@
   (erase-buffer)
   (comint-send-input))
 
-(provide 'my-shell)
+(provide 'init-shell)

@@ -14,7 +14,13 @@
                            (progn (setq old-fullscreen current-value)
                                   'fullboth)))))
 
-(global-set-key [f11] 'toggle-fullscreen)
+(when (and *is-a-mac* (fboundp 'toggle-frame-fullscreen))
+  ;; Command-Option-f to toggle fullscreen mode
+  ;; Hint: Customize `ns-use-native-fullscreen'
+  (global-set-key (kbd "M-ƒ") 'toggle-frame-fullscreen))
+
+
+;;(global-set-key (kbd M-f) 'toggle-fullscreen)
 
 ;; the blinking cursor is nothing, but an annoyance
 (blink-cursor-mode -1)
@@ -49,4 +55,4 @@
 ;;(require 'cygwin-mount)
 ;;(cygwin-mount-activate)
 
-(provide 'my-ui)
+(provide 'init-ui)

@@ -101,9 +101,11 @@
 (winner-mode t)
 
 ;;ido mode
-(setq ido-enable-flex-matching t)
+(ido-mode t)
 (setq ido-everywhere t)
-(ido-mode 1)
+(setq ido-enable-flex-matching t)
+
+
 
 ;;window move default key binding
 (windmove-default-keybindings)
@@ -121,5 +123,4 @@
 
 ;;(normal-erase-is-backspace-mode t)
 
-(provide 'my-defaults)
-
+(provide 'init-defaults)

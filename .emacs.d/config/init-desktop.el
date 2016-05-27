@@ -2,4 +2,4 @@
 (setq desktop-dirname "~/.emacs.d/desktop-dir")
 
 (desktop-load-default)
-(provide 'my-desktop)
+(provide 'init-desktop)

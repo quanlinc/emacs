@@ -11,17 +11,6 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
-(defvar root-dir (file-name-directory load-file-name)
-  "The root dir of Emacs configuration.")
-
-(defvar emacs-config-dir (concat root-dir "/.emacs.d/config/")
-  "This directory houses all of the main configuration")
-
-(defvar emacs-site-lisp-dir (concat root-dir "/.emacs.d/site-lisp/"))
-
-(add-to-list 'load-path emacs-config-dir)
-(add-to-list 'load-path emacs-site-lisp-dir)
-
 (defvar required-packages
   '(auto-complete
     color-theme
@@ -59,4 +48,33 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-(provide 'my-packages)
+;;; On-demand installation of packages
+
+(defun require-package (package &optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (if (boundp 'package-selected-packages)
+            ;; Record this as a package the user installed explicitly
+            (package-install package nil)
+          (package-install package))
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
+
+(defun maybe-require-package (package &optional min-version no-refresh)
+  "Try to install PACKAGE, and return non-nil if successful.
+In the event of failure, return nil and print a warning message.
+Optionally require MIN-VERSION.  If NO-REFRESH is non-nil, the
+available package lists will not be re-downloaded in order to
+locate PACKAGE."
+  (condition-case err
+      (require-package package min-version no-refresh)
+    (error
+     (message "Couldn't install package `%s': %S" package err)
+     nil)))
+
+(provide 'init-packages)

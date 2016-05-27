@@ -26,4 +26,4 @@
   (setq require-final-newline nil))
 
 (add-hook 'snippet-mode-hook 'snippet-mode-setup)
-(provide 'my-yasnippet)
+(provide 'init-yasnippet)

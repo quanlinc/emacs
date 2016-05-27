@@ -14,4 +14,4 @@
 (setq grep-command "grep -srni ")
 (setq compilation-scroll-output t)
 
-(provide 'my-grep)
+(provide 'init-grep)

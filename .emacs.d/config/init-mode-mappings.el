@@ -28,4 +28,4 @@
     ;; (setq auto-mode-alist (cons '("\\.fin$" . fortran-mode) auto-mode-alist))
     ;; (setq auto-mode-alist (cons '("\\.mak$" . makefile-mode) auto-mode-alist))
 
-(provide 'my-mode-mappings)
+(provide 'init-mode-mappings)

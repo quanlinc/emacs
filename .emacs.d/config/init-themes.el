@@ -4,4 +4,4 @@
     (load-theme 'dracula t) 
   (load-theme 'wheatgrass t))
 
-(provide 'my-themes)
+(provide 'init-themes)

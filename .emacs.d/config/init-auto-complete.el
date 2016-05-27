@@ -11,4 +11,4 @@
 
 ;(ac-set-trigger-key "TAB")
 ;(ac-set-trigger-key "<tab>")
-(provide 'my-auto-complete)
+(provide 'init-auto-complete)

@@ -23,4 +23,4 @@ File name         |        Comment
 	my-themes       |  pretty much just one theme for now zenburn.
 	my-ui           |  UI related configuration
 	my-yasnippet    |  snippet templates configuration
-	my.c            |  c coding style, legacy, good to have though
+	my-c            |  c coding style, legacy, good to have though

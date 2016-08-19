@@ -25,6 +25,7 @@
 (require 'init-defuns)
 (require 'init-packages)
 (require 'init-dired)
+(require 'dired+)
 (require 'init-auto-complete)
 (require 'flex-isearch)
 (require 'init-mmm)

@@ -9,6 +9,19 @@
 ;; org mode
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode))
 
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
 (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 ;   To invoke html-helper-mode automatically on .html files, do this:
     ;; (setq auto-mode-alist (cons '("\\.html$" . html-mode) auto-mode-alist))

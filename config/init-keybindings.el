@@ -1,7 +1,7 @@
 
 ;; Bind the CTRL plus . "dot" key to go to next tag
 (global-set-key (kbd "C-.") 'find-next-tag)
-
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-M-s") #'flx-isearch-forward)
 (global-set-key (kbd "C-M-r") #'flx-isearch-backward)
 ;(global-set-key (kbd "C-c SPC") 'ace-jump-word-mode)

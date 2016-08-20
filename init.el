@@ -53,6 +53,10 @@
 (require 'init-mode-mappings)
 (require 'expand-region)
 (require 'init-xterm)
+;; Diminish modeline clutter
+(require 'diminish)
+(diminish 'wrap-region-mode)
+(diminish 'yas/minor-mode)
 ;;Load desktop last
 (require 'init-desktop)
 

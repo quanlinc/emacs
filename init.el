@@ -17,8 +17,32 @@
 (defvar emacs-snippet-dir (concat root-dir "/snippets/")
   "This directory contains all snippets for yasnippet")
 
+
+
+(defvar emacs-tern "/Users/quanlin.chen/projects/tern/emacs/";(concat root-dir "/elpa/tern-20160817.522/")
+  "tern path")
+
 (add-to-list 'load-path emacs-config-dir)
 (add-to-list 'load-path emacs-site-lisp-dir)
+
+
+
+
+
+(add-to-list 'load-path emacs-tern)
+(autoload 'tern-mode "tern.el" nil t)
+
+
+(setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/.nvm/v4.3.1/bin"))
+(setq exec-path (append exec-path '("/Users/quanlin.chen/.nvm/v4.3.1/bin")))
+
+;; (setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/projects/tern/bin"))
+;;     (setq exec-path (append exec-path '("/Users/quanlin.chen/projects/tern/bin")))
+
+;; (add-to-list 'load-path "/Users/quanlin.chen/.nvm/v4.3.1/bin/")
+;; (autoload 'tern-mode "tern.el" nil t)
+
+
 
 (require 'init-benchmark)
 (require 'init-defaults)
@@ -36,6 +60,8 @@
 (require 'init-yasnippet)
 (require 'init-projectile)
 (require 'init-grep)
+
+;(require 'tern)
 
 ;; programming style
 (require 'init-html)
@@ -74,6 +100,17 @@
           (lambda ()
             (message "init completed in %.2fms"
                      (sanityinc/time-subtract-millis after-init-time before-init-time))))
+
+
+(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
+(defun delete-tern-process ()
+  (interactive)
+  (delete-process "Tern"))
 
 (provide 'init)
 

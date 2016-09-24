@@ -12,7 +12,9 @@
 (package-initialize)
 
 (defvar required-packages
-  '(auto-complete
+  '(
+    ace-jump-mode
+    auto-complete
     color-theme
     ctags
     dash
@@ -23,6 +25,7 @@
     javadoc-lookup
     js-comint
     js2-mode
+    magit
     paredit
     rvm
     s

@@ -37,7 +37,7 @@
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
-(display-time)
+(display-time-mode t)
 (setq transient-mark-mode "true")
 (setq global-font-lock-mode "true")
 

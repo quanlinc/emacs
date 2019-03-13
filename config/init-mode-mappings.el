@@ -1,8 +1,13 @@
 ;;Javascript
+
+;;; Code:
+
 (add-to-list 'auto-mode-alist '(".js$" . js2-mode))
 (add-to-list 'auto-mode-alist '(".less$" . less-css-mode))
 (add-to-list 'auto-mode-alist '(".css$" . css-mode))
 (add-to-list 'auto-mode-alist '(".html$" . angular-html-mode))
+(require 'rjsx-mode)
+(add-to-list 'auto-mode-alist '(".jsx" . rjsx-mode))
 ;;(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
 (add-to-list 'auto-mode-alist '(".java$" . java-mode))
 ;;(add-to-list 'auto-mode-alist '(".htm$" . html-mode))
@@ -21,6 +26,20 @@
 
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+
+;; Setup Jedi
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t) ; optional
+
+
+;; ;; Used by virtualenvwrapper.el
+;; (setq venv-location (expand-file-name "~/.envs"))
+;; ;; Used phton-environment.el and by extend jedi.el
+;; (setq python-environment-directory venv-location)
+
+;; (when (memq window-system '(mac ns))
+;;   (exec-path-from-shell-initialize))
 
 (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
 ;   To invoke html-helper-mode automatically on .html files, do this:

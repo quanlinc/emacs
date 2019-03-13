@@ -1,0 +1,5 @@
+(setq jenkins-api-token "9b3dec9043d901d6b5adea657af6af6d")
+(setq jenkins-url "https://jenkins-cicd.americas.nwea.pvt")
+(setq jenkins-username "quanlin.chen")
+;;(setq jenkins-viewname "Map-skills")
+(provide 'init-jenkins)

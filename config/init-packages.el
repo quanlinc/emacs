@@ -25,9 +25,11 @@
     javadoc-lookup
     js-comint
     js2-mode
+    json-mode
     magit
     paredit
     rvm
+    nvm
     s
     scss-mode
     smex

@@ -105,6 +105,31 @@
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
+;;turn off alarm
+;;by displaying a warning icon in the center of the screen
+;;(setq visible-bell 1)
+
+;;by flashing the modeline
+(setq ring-bell-function
+      (lambda ()
+        (let ((orig-fg (face-foreground 'mode-line)))
+          (set-face-foreground 'mode-line "#F2804F")
+          (run-with-idle-timer 0.1 nil
+                               (lambda (fg) (set-face-foreground 'mode-line fg))
+                               orig-fg))))
+;; ;;by flashing the screen
+;; (setq lexical-binding t
+;;       visible-bell nil
+;;       ring-bell-function 'asc:flash-background)
+;; (defun asc:flash-background ()
+;;   (let ((fg (face-foreground 'default))
+;;         (bg (face-background 'default)))
+;;     (set-face-background 'default "DodgerBlue")
+;;     (set-face-foreground 'default "black")
+;;     (run-with-idle-timer
+;;      1 nil (lambda ()
+;;              (set-face-background 'default bg)
+;;              (set-face-foreground 'default fg)))))
 
 
 ;;window move default key binding

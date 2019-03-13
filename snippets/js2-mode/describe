@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Describe
+# key: ds
+# --
+describe(${1:description}, () => {
+  beforeEach(() => {
+    $0
+  });
+});

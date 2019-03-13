@@ -46,9 +46,13 @@
 
 ;;Hightlight the current line
 (global-hl-line-mode 1)
-(set-face-background 'highlight "#3e4446")
-(set-face-foreground 'highlight nil)
-(set-face-underline-p 'highlight nil)
+(set-face-background 'highlight "405a63");; "#3e4446")
+;; (set-face-foreground 'highlight nil)
+;; (set-face-underline-p 'highlight nil)
+
+;;mini-buffer face
+(set-face-foreground 'minibuffer-prompt "white")
+(set-face-background 'minibuffer-prompt "#3e4446")
 
 ;; If using Emacs under windows
 ;; Allows Emacs to recognize cygwin paths

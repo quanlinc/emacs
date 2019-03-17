@@ -1,3 +1,7 @@
+;;; init-yasnippet.el --- Support for code snippet
+;;; Commentary:
+;;; Code:
+
 (require 'yasnippet)
 
 ;; Allow nested expansions
@@ -27,3 +31,4 @@
 
 (add-hook 'snippet-mode-hook 'snippet-mode-setup)
 (provide 'init-yasnippet)
+;;; init-yasnippet.el ends here

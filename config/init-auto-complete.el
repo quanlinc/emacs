@@ -1,3 +1,7 @@
+;;; init-auto-complete.el --- Setting for auto completion
+;;; Commentary:
+;;; Code:
+
 (require 'auto-complete)
 (require 'auto-complete-config)
 
@@ -12,3 +16,4 @@
 ;(ac-set-trigger-key "TAB")
 ;(ac-set-trigger-key "<tab>")
 (provide 'init-auto-complete)
+;;; init-auto-complete.el ends here

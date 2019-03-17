@@ -1,3 +1,6 @@
+;;; init-isearch --- isearch settings
+;;; Commentary:
+;;; Code:
 
 ;; Activate occur easily inside isearch
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
@@ -6,3 +9,4 @@
 (define-key isearch-mode-map [remap isearch-delete-char] 'isearch-del-char)
 
 (provide 'init-isearch)
+;;; init-isearch.el ends here

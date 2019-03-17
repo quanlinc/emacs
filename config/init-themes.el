@@ -1,7 +1,9 @@
-;;(load-theme 'tango-dark t)
-;;(load-theme 'zenburn t)
-(if (display-graphic-p) 
-    (load-theme 'monokai t);(load-theme 'dracula t) 
+;;; init-themes.el --- setup default theme
+;;; Commentary:
+;;; Code:
+(if (display-graphic-p)
+    (load-theme 'atom-one-dark t)
   (load-theme 'wheatgrass t))
 
 (provide 'init-themes)
+;;; init-themes.el ends here

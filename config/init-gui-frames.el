@@ -1,3 +1,7 @@
+;;; init-gui-frames.el --- Behavior specific to non-TTY frames
+;;; Commentary:
+;;; Code:
+
 ;;----------------------------------------------------------------------------
 ;; Stop C-z from minimizing windows under OS X
 ;;----------------------------------------------------------------------------
@@ -7,6 +11,14 @@
     (suspend-frame)))
 
 (global-set-key (kbd "C-z") 'sanityinc/maybe-suspend-frame)
+
+;;----------------------------------------------------------------------------
+;; Suppress GUI features
+;;----------------------------------------------------------------------------
+(setq use-file-dialog nil)
+(setq use-dialog-box nil)
+(setq inhibit-startup-screen t)
+
 ;;----------------------------------------------------------------------------
 ;; Show a marker in the left fringe for lines not in the buffer
 ;;----------------------------------------------------------------------------
@@ -33,3 +45,4 @@
             (setq line-spacing 0)))
 
 (provide 'init-gui-frames)
+;;; init-gui-frames.el ends here

@@ -1,3 +1,7 @@
+;;; init-java.el --- Java  development suport
+;;; Commentary:
+;;; Code:
+
 ;;putting both c and java stuff here
 (defconst my-c-style
   '((c-tab-always-indent        . t)
@@ -27,7 +31,7 @@
 (defun my-c-mode-common-hook ()
   ;; add my personal style and set it for the current buffer
   (c-add-style "PERSONAL" my-c-style t)
-  (setq c-basic-offset 4)  
+  (setq c-basic-offset 4)
   (c-set-offset 'substatement-open 0)
   ;; offset customizations not in my-c-style
   (c-set-offset 'member-init-intro 0)
@@ -44,7 +48,7 @@
   ;; java-mode-map, and idl-mode-map inherit from it.
   (define-key c-mode-base-map "\C-m" 'newline-and-indent)
   )
-     
+
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 
@@ -63,7 +67,7 @@
 ;;; Require the JDE...
 
 
-;; If you want Emacs to defer loading the JDE until you open a 
+;; If you want Emacs to defer loading the JDE until you open a
 ;; Java file, edit the following line
 (setq defer-loading-jde nil)
 ;; to read:
@@ -91,3 +95,4 @@
 
 
 (provide 'init-java)
+;;; init-java.el ends here

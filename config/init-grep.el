@@ -1,3 +1,7 @@
+;;; init-grep.el --- Settings for grep and grep-like-tools
+;;; Commentary:
+;;; Code:
+
 (require 'repository-root)
 (setq repository-root-matchers (quote (repository-root-matcher/git)))
 (require 'grep-o-matic)
@@ -15,3 +19,4 @@
 (setq compilation-scroll-output t)
 
 (provide 'init-grep)
+;;; init-grep.el ends here

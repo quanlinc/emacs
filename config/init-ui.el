@@ -1,3 +1,7 @@
+;;; init-ui.el ---  UI setup
+;;; Commentary:
+;;; Code:
+
 ;; First take care of UI
 ;; disable tool-bar/scroll-bar/menu-bar
 (tool-bar-mode -1)
@@ -60,3 +64,4 @@
 ;;(cygwin-mount-activate)
 
 (provide 'init-ui)
+;;; init-ui.el ends here

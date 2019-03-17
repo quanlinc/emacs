@@ -1,3 +1,7 @@
+;;; init-projectile.el --- Project navigation using projectile
+;;; Commentary:
+;;; Code:
+
 (require 'projectile)
 (projectile-global-mode t)
 ;;(projectile-mode +1)
@@ -11,3 +15,4 @@
 (add-to-list 'projectile-other-file-alist '("js" "html")) ;; switch from js -> html
 
 (provide 'init-projectile)
+;;; init-projectile.el ends here

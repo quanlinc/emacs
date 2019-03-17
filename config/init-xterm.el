@@ -1,3 +1,6 @@
+;;; init-xterm.el --- Integrate with terminals such as xterm
+;;; Commentary:
+;;; Code:
 (require 'init-frame-hooks)
 
 (defun fix-up-xterm-control-arrows ()
@@ -53,3 +56,4 @@
 (add-hook 'after-make-console-frame-hooks 'sanityinc/console-frame-setup)
 
 (provide 'init-xterm)
+;;; init-xterm.el ends here

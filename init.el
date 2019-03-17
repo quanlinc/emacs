@@ -1,4 +1,6 @@
-;;; Initialization file for configuration
+;;; init.el --- Initialization file for configuration
+;;; Commentary:
+;;; Code:
 
 ;; For debugging error on startup
 ;;(setq debug-on-error t)
@@ -26,7 +28,7 @@
 
 
 
-(defvar emacs-tern "/Users/quanlin.chen/projects/tern/emacs/";(concat root-dir "/elpa/tern-20160817.522/")
+(defvar emacs-tern "/Users/quanlin.chen/projects/tern/emacs/"
   "tern path")
 
 (add-to-list 'load-path emacs-config-dir)
@@ -45,8 +47,6 @@
 ;; (add-to-list 'load-path "/Users/quanlin.chen/.nvm/v4.3.1/bin/")
 ;; (autoload 'tern-mode "tern.el" nil t)
 
-
-
 (require 'init-benchmark)
 (require 'init-defaults)
 (require 'init-defuns)
@@ -58,15 +58,17 @@
 (require 'init-mmm)
 (require 'init-ui)
 (require 'init-gui-frames)
+(require 'init-frame-hooks)
 (require 'init-defuns)
+(require 'init-flycheck)
+(require 'flycheck-flow)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
 (require 'init-projectile)
 (require 'init-grep)
 (require 'helm-config)
 ;;(require 'tern)
-(require 'init-flycheck)
-(require 'flycheck-flow)
+
 
 ;; programming style
 (require 'init-html)
@@ -148,7 +150,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit monokai-theme mmm-mode js2-refactor js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags color-theme auto-complete)))
+    (json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js2-refactor js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags color-theme auto-complete)))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

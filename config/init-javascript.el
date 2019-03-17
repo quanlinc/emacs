@@ -1,3 +1,7 @@
+;;; init-javascript.el --- Javascript support
+;;; Commentary:
+;;; Code:
+
 (require 'json-mode)
 (require 'js2-refactor)
 (require 'xref-js2)
@@ -80,3 +84,4 @@
                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 (provide 'init-javascript)
+;;; init-javascript.el ends here

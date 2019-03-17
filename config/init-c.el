@@ -1,3 +1,6 @@
+;;; init-c.el --- C configuration
+;;; Commentary:
+;;; Code:
 
 (defconst my-c-style
   '((c-tab-always-indent        . t)
@@ -27,7 +30,7 @@
 (defun my-c-mode-common-hook ()
   ;; add my personal style and set it for the current buffer
   (c-add-style "PERSONAL" my-c-style t)
-  (setq c-basic-offset 4)  
+  (setq c-basic-offset 4)
   (c-set-offset 'substatement-open 0)
   ;; offset customizations not in my-c-style
   (c-set-offset 'member-init-intro 0)
@@ -44,9 +47,10 @@
   ;; java-mode-map, and idl-mode-map inherit from it.
   (define-key c-mode-base-map "\C-m" 'newline-and-indent)
   )
-     
+
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
 
 ;; Load C++ templates - execute templates using F7 key
 ;;(load-file '"~/.emacs.d/tempo_skeletons.el")
 (provide 'init-c)
+;;; init-c.el ends here

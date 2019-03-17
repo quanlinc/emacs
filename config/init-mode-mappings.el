@@ -1,4 +1,6 @@
-;;Javascript
+;;; init-mode-mappings.el --- Applying modes to corresponding files
+;;; Commentary:
+;;; Code:
 
 ;;; Code:
 
@@ -61,3 +63,4 @@
     ;; (setq auto-mode-alist (cons '("\\.mak$" . makefile-mode) auto-mode-alist))
 
 (provide 'init-mode-mappings)
+;;; init-mode-mappings.el ends here

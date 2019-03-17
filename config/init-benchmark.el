@@ -1,3 +1,7 @@
+;;; init-benchmark.el --- Measure startup and require time
+;;; Commentary:
+;;; Code:
+
 (defun sanityinc/time-subtract-millis (b a)
   (* 1000.0 (float-time (time-subtract b a))))
 
@@ -67,3 +71,4 @@ LOAD-DURATION is the time taken in milliseconds to load FEATURE.")
 
 
 (provide 'init-benchmark)
+;;; init-benchmark.el ends here

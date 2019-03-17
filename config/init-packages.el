@@ -1,4 +1,8 @@
-(require 'package) 
+;;; init-packages.el --- Packages installation and repository setup
+;;; Commentary:
+;;; Code:
+
+(require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
@@ -13,28 +17,44 @@
 
 (defvar required-packages
   '(
-    ace-jump-mode
+    avy
     auto-complete
+    ;;TODO figure out how to load theme as it's causing package.el to add trailing dash
+    ;;atom-one-dark
     color-theme
+    company-flow
     ctags
     dash
+    diminish
     dired-single
     etags-select
     etags-table
+    expand-region
+    flycheck
+    flycheck-flow
+    grep-o-matic
+    helm
+    helm-projectile
     ido-ubiquitous
     javadoc-lookup
     js-comint
     js2-mode
+    js2-refactor
     json-mode
     magit
+    mmm-mode
     paredit
+    projectile
     rvm
     nvm
+    rjsx-mode
     s
     scss-mode
     smex
+    web-mode
+    ws-butler
+    xref-js2
     yasnippet
-    zenburn-theme
     )
   "A list of packages are ensured to be installed at launch.")
 
@@ -83,3 +103,4 @@ locate PACKAGE."
      nil)))
 
 (provide 'init-packages)
+;;; init-packages.el ends here

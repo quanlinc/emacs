@@ -50,7 +50,7 @@
 
 ;;Hightlight the current line
 (global-hl-line-mode 1)
-(set-face-background 'highlight "405a63");; "#3e4446")
+(set-face-background 'highlight "405a63")
 ;; (set-face-foreground 'highlight nil)
 ;; (set-face-underline-p 'highlight nil)
 
@@ -62,6 +62,9 @@
 ;; Allows Emacs to recognize cygwin paths
 ;;(require 'cygwin-mount)
 ;;(cygwin-mount-activate)
+
+;; use avy with all buffer, frame and windows
+(setq avy-all-windows 'all-frames)
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

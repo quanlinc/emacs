@@ -42,6 +42,7 @@
     js2-refactor
     json-mode
     magit
+    meghanada
     mmm-mode
     paredit
     projectile

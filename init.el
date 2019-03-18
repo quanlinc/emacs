@@ -72,6 +72,7 @@
 
 ;; programming style
 (require 'init-html)
+(require 'init-java)
 (require 'init-javascript)
 (require 'init-jsdoc)
 ;; jenkins plugin

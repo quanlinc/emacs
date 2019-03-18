@@ -1,4 +1,30 @@
-;; Modifications to Emacs defaults setup
+;;; init-editing-utils.el --- Modifications to Emacs defaults setup
+;;; Commentary:
+;;; Code:
+
+;; the blinking cursor is nothing, but an annoyance
+(blink-cursor-mode -1)
+
+;; nice scrolling
+(setq scroll-margin 0
+      scroll-conservatively 100000
+      scroll-preserve-screen-position 1)
+
+;; mode line settings
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+(display-time-mode t)
+(setq transient-mark-mode "true")
+(setq global-font-lock-mode "true")
+
+
+;; use avy with all buffer, frame and windows
+(when (maybe-require-package 'avy)
+  (setq avy-all-windows 'all-frames)
+  (global-set-key (kbd "C-;") 'avy-goto-char-timer)
+  (global-set-key (kbd "s-w") 'ace-window))
+
 
 ;; Allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard t)
@@ -56,7 +82,7 @@
 ;; smart indenting and pairing for all
 (electric-pair-mode t)
 (electric-indent-mode t)
-(electric-layout-mode t)
+;;(electric-layout-mode t)
 
 ;; Remove text in active region if inserting text
 (delete-selection-mode 1)
@@ -72,7 +98,7 @@
 (recentf-mode 1)
 
 ;; Never insert tabs
-(set-default 'indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Keep cursor away from edges when scrolling up/down
 ;(require 'smooth-scrolling)
@@ -148,4 +174,48 @@
 
 ;;(normal-erase-is-backspace-mode t)
 
-(provide 'init-defaults)
+
+;;---------------
+;; Multi-cursor
+;;---------------
+
+(require-package 'multiple-cursors)
+;; multiple-cursors
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-+") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; From active region to multiple cursors:
+(global-set-key (kbd "C-c m r") 'set-rectangular-region-anchor)
+(global-set-key (kbd "C-c m c") 'mc/edit-lines)
+(global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
+(global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
+
+;; Huge files
+
+(require-package 'vlf)
+
+(defun ffap-vlf ()
+  "Find file at point with VLF."
+  (interactive)
+  (let ((file (ffap-file-at-point)))
+    (unless (file-exists-p file)
+      (error "File does not exist: %s" file))
+    (vlf file)))
+
+;; Beacon, never lose cursor again
+(when (maybe-require-package 'beacon)
+  (setq-default beacon-lighter "")
+  (setq-default beacon-size 20)
+  (setq-default beacon-color "#db6df9")
+  (add-hook 'after-init-hook 'beacon-mode))
+
+;; Automatically prompt avaialble key bindings
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence t)
+(add-hook 'after-init-hook 'guide-key-mode)
+(after-load 'guide-key
+  (diminish 'guide-key-mode))
+
+(provide 'init-editing-utils)
+;;; init-editing-utils.el ends here

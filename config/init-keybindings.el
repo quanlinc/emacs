@@ -9,11 +9,6 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
-;;avy
-(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "s-.") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "s-w") 'ace-window)
-
 ;; bind Alt/Meta + n/p to scroll page up/down
 (global-set-key "\M-n" (lambda() (interactive) (scroll-up 1)))
 (global-set-key "\M-p" (lambda() (interactive) (scroll-down 1)))

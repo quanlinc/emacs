@@ -15,6 +15,7 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize)
 
+;;TODO: slowly reduce the size of the required package list and move towards loading packages on demand using require-package/maybe-require-package
 (defvar required-packages
   '(
     avy

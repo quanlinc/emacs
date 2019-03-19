@@ -49,7 +49,7 @@
 
 (require 'init-benchmark)
 (require 'init-packages)
-(require 'init-defuns)
+(require 'init-utils)
 (require 'init-editing-utils)
 (require 'init-dired)
 ;;(require 'init-auto-complete)
@@ -58,7 +58,6 @@
 (require 'init-mmm)
 (require 'init-gui-frames)
 (require 'init-frame-hooks)
-(require 'init-defuns)
 (require 'init-flycheck)
 (require 'flycheck-flow)
 (require 'init-uniquify)

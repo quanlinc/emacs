@@ -2,21 +2,55 @@
 ;;; Commentary:
 ;;; Code:
 
+;;-------------------------
+;; Personal preferences
+;;-------------------------
+(setq-default
 ;; the blinking cursor is nothing, but an annoyance
-(blink-cursor-mode -1)
+ blink-cursor-mode -1
+;; No splash screen please ... jeez
+ inhibit-startup-message t
+;; Always display line and column numbers
+ column-number-mode t
+ line-number-mode t
+;; display time
+ display-time-mode t
+;; display file size
+ size-indication-mode t
+;; Never insert tabs
+ indent-tabs-mode nil
+;; Remove text in active region if inserting text
+ delete-selection-mode 1
+;; Real emacs knights don't use shift to mark things
+ shift-select-mode nil
+;; Move files to trash when deleting
+ delete-by-moving-to-trash t
+;; Show keystrokes in progress
+ echo-keystrokes 0.1
+;; Allow pasting selection outside of Emacs
+ x-select-enable-clipboard t
+;; Transparently open compressed files
+ auto-compression-mode t
+;; Enable syntax highlighting for older Emacsen that have it off
+ global-font-lock-mode t
+;; Disable backup/autosave
+ make-backup-files nil
+ backup-inhibited t
+ auto-save-default nil
+ ;; Choose one behavior to end a buffer
+ ;; Don't add unintentional new lines at the end of buffer
+ next-line-add-newlines nil
+
+ ;; Always end a file with a newline
+ ;;require-final-newline t
+
+ ;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
+ global-subword-mode t)
 
 ;; nice scrolling
 (setq scroll-margin 0
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
-
-;; mode line settings
-(line-number-mode t)
-(column-number-mode t)
-(size-indication-mode t)
-(display-time-mode t)
-(setq transient-mark-mode "true")
-(setq global-font-lock-mode "true")
 
 
 ;; use avy with all buffer, frame and windows
@@ -26,42 +60,14 @@
   (global-set-key (kbd "s-w") 'ace-window))
 
 
-;; Allow pasting selection outside of Emacs
-(setq x-select-enable-clipboard t)
 ;; Auto refresh buffers
-(global-auto-revert-mode 1)
-(setq auto-revert-verbose nil)
+(add-hook 'after-init-hook 'global-auto-revert-mode)
 ;; Also auto refresh dired
-(setq global-auto-revert-non-file-buffers t)
+(setq global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil)
+(after-load 'autorevert
+  (diminish 'auto-revert-mode))
 
-;; Show keystrokes in progress
-(setq echo-keystrokes 0.1)
-
-;; No splash screen please ... jeez
-(setq inhibit-startup-message t)
-
-;; Move files to trash when deleting
-(setq delete-by-moving-to-trash t)
-
-;; Real emacs knights don't use shift to mark things
-(setq shift-select-mode nil)
-
-;; Transparently open compressed files
-(auto-compression-mode t)
-
-;; Enable syntax highlighting for older Emacsen that have it off
-(global-font-lock-mode t)
-
-;; Don't add unintentional new lines at the end of buffer
-(setq next-line-add-newlines nil)
-
-;; Always end a file with a newline
-(setq require-final-newline t)
-
-;; Disable backup/autosave
-(setq make-backup-files nil)
-(setq backup-inhibited t)
-(setq auto-save-default nil)
 
 ;; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -74,7 +80,6 @@
 (prefer-coding-system 'utf-8)
 
 ;; Show active region
-(transient-mark-mode 1)
 (make-variable-buffer-local 'transient-mark-mode)
 (put 'transient-mark-mode 'permanent-local t)
 (setq-default transient-mark-mode t)
@@ -84,12 +89,6 @@
 (electric-indent-mode t)
 ;;(electric-layout-mode t)
 
-;; Remove text in active region if inserting text
-(delete-selection-mode 1)
-
-;; Always display line and column numbers
-(setq line-number-mode t)
-(setq column-number-mode t)
 
 ;; 120 characters is about how many before wrapping (with vertical split)
 (setq fill-column 120)
@@ -97,29 +96,22 @@
 ;; Save a list of recent files visited.
 (recentf-mode 1)
 
-;; Never insert tabs
-(setq-default indent-tabs-mode nil)
-
 ;; Keep cursor away from edges when scrolling up/down
 ;(require 'smooth-scrolling)
 
-;; Add parts of each file's directory to the buffer name if not unique
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-(setq uniquify-separator "/")
-(setq uniquify-after-kill-buffer-p t) ; rename after killing uniquified
-(setq uniquify-ignore-buffers-re "^\\*") ; don't muck with special buffers
+;; (when (fboundp 'linum-mode)
+;;   (setq display-line-numbers-width 3)
+;;   (add-hook 'prog-mode-hook 'linum-mode))
 
-(require 'tramp)
-;; keep in mind known issues with zsh - see emacs wiki
-(setq tramp-default-method "ssh")
-(setq tramp-default-user "root")
-;;(add-to-list 'tramp-default-proxies-alist
-;;             '(nil "\\`root\\'" "/ssh:%h:"))
-;;(add-to-list 'tramp-default-proxies-alist
-;;             '((regexp-quote (system-name)) nil nil))
-;; Root access on local host: /sudo::<path-to-root-owned-file>
-;; Root access on remote hosts: /sudo:root@remote-host:<path-to-root-owned-file>
+;; (when (maybe-require-package 'goto-line-preview)
+;;   (global-set-key [remap goto-line] 'goto-line-preview)
+
+;;   (when (fboundp 'linum-mode)
+;;     (defun sanityinc/with-display-line-numbers (f &rest args)
+;;       (let ((display-line-numbers t))
+;;         (apply f args)))
+;;     (advice-add 'goto-line-preview :around #'sanityinc/with-display-line-numbers)))
+
 
 ;; auto-completion in minibuffer
 (icomplete-mode 1)
@@ -162,9 +154,6 @@
 (windmove-default-keybindings)
 ;; when cursor is on edge, move to the other side, as in a torus space
 (setq windmove-wrap-around t)
-
-;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
-(global-subword-mode t)
 
 ;; Abbreviations
 ;;(setq save-abbrevs t)              ;; save abbrevs when files are saved

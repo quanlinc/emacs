@@ -111,7 +111,5 @@
 (set-face-foreground 'minibuffer-prompt "white")
 (set-face-background 'minibuffer-prompt "#3e4446")
 
-
-
 (provide 'init-gui-frames)
 ;;; init-gui-frames.el ends here

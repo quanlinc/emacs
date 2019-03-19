@@ -61,10 +61,12 @@
 (require 'init-defuns)
 (require 'init-flycheck)
 (require 'flycheck-flow)
+(require 'init-uniquify)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
 (require 'init-projectile)
 (require 'init-grep)
+(require 'init-tramp)
 (require 'helm-config)
 ;;(require 'tern)
 

@@ -19,7 +19,6 @@
   "This directory contains all snippets for yasnippet")
 
 
-
 (defvar emacs-tern "/Users/quanlin.chen/projects/tern/emacs/"
   "tern path")
 
@@ -62,6 +61,7 @@
 (require 'init-company)
 (require 'init-mmm)
 (require 'init-gui-frames)
+(require 'init-themes)
 (require 'init-frame-hooks)
 (require 'init-flycheck)
 (require 'flycheck-flow)
@@ -81,6 +81,7 @@
 (require 'init-javascript)
 (require 'init-jsdoc)
 (require 'init-terraform)
+(require 'init-git)
 ;; jenkins plugin
 (require 'init-jenkins)
 
@@ -88,11 +89,8 @@
 (when *spell-check-support-enalbed*
   (require 'init-spelling))
 (require 'init-shell)
-(require 'init-themes)
-;;initialize global keybindings and mode mappings
-(require 'init-keybindings)
+
 (require 'init-mode-mappings)
-(require 'expand-region)
 (require 'init-xterm)
 ;; Diminish modeline clutter
 

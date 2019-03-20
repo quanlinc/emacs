@@ -59,6 +59,22 @@
   (global-set-key (kbd "C-;") 'avy-goto-char-timer)
   (global-set-key (kbd "s-w") 'ace-window))
 
+;; Bind the CTRL plus . "dot" key to go to next tag
+(global-set-key (kbd "C-.") 'find-next-tag)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-M-s") #'flx-isearch-forward)
+(global-set-key (kbd "C-M-r") #'flx-isearch-backward)
+
+;;Helm
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+;; Show-hide
+(global-set-key (kbd "C-c C-n") 'hs-show-block)
+;;(global-set-key (kbd "") 'hs-show-all)
+(global-set-key (kbd "C-c C-h") 'hs-hide-block)
+;;(global-set-key (kbd "") 'hs-hide-all)
+
 
 ;; Auto refresh buffers
 (add-hook 'after-init-hook 'global-auto-revert-mode)
@@ -123,6 +139,10 @@
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
 
+;; bind Alt/Meta + n/p to scroll page up/down
+(global-set-key "\M-n" (lambda() (interactive) (scroll-up 1)))
+(global-set-key "\M-p" (lambda() (interactive) (scroll-down 1)))
+
 ;;turn off alarm
 ;;by displaying a warning icon in the center of the screen
 ;;(setq visible-bell 1)
@@ -163,6 +183,11 @@
 
 ;;(normal-erase-is-backspace-mode t)
 
+;;---------------
+;; Expand region
+;;---------------
+(require 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;---------------
 ;; Multi-cursor

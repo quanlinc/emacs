@@ -2,11 +2,11 @@
 ;;; Commentary:
 ;;; Code:
 
-(defun indent-block (from to) 
+(defun indent-block (from to)
   (interactive "r")
   (indent-rigidly from to tab-width))
 
-(defun unindent-block (from to) 
+(defun unindent-block (from to)
   (interactive "r")
   (indent-rigidly from to (- tab-width)))
 

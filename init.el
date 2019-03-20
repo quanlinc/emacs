@@ -5,14 +5,6 @@
 ;; For debugging error on startup
 ;;(setq debug-on-error t)
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
-(require 'cl)
-
 ;; toggle the default spelling check feature
 (defconst *spell-check-support-enalbed* t)
 (defconst *is-a-mac* (eq system-type 'darwin))
@@ -48,8 +40,21 @@
 ;; (autoload 'tern-mode "tern.el" nil t)
 
 (require 'init-benchmark)
+;;----------------------------------------------------------------------------
+;; Adjust garbage collection thresholds during startup, and thereafter
+;;----------------------------------------------------------------------------
+(let ((normal-gc-cons-threshold (* 20 1024 1024))
+      (init-gc-cons-threshold (* 128 1024 1024)))
+  (setq gc-cons-threshold init-gc-cons-threshold)
+  (add-hook 'emacs-startup-hook
+            (lambda () (setq gc-cons-threshold normal-gc-cons-threshold))))
+
+;;-----------------------
+;; Fire up emacs
+;;-----------------------
 (require 'init-packages)
 (require 'init-utils)
+(require 'diminish)
 (require 'init-editing-utils)
 (require 'init-dired)
 ;;(require 'init-auto-complete)
@@ -90,7 +95,7 @@
 (require 'expand-region)
 (require 'init-xterm)
 ;; Diminish modeline clutter
-(require 'diminish)
+
 (diminish 'wrap-region-mode)
 (diminish 'yas/minor-mode)
 ;;Load desktop last

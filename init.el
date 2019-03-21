@@ -75,6 +75,7 @@
 ;;(require 'tern)
 
 ;; programming style
+(require 'init-lisp)
 (require 'init-html)
 (require 'init-css)
 (require 'init-java)

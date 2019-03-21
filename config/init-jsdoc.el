@@ -1,4 +1,4 @@
-(require 'js-doc)
+(require-package 'js-doc)
 
 (setq js-doc-mail-address "quanlin.chen@nwea.org"
        js-doc-author (format "Quanlin Chen <%s>" js-doc-mail-address)

@@ -2,10 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'json-mode)
-(require 'js2-refactor)
-(require 'xref-js2)
-(require 'nvm)
+(maybe-require-package 'json-mode)
+(maybe-require-package 'js2-mode)
+(maybe-require-package 'js2-refactor)
+(maybe-require-package 'xref-js2)
+(maybe-require-package 'nvm)
+(maybe-require-package 'js-comint)
+(require-package 'flycheck-flow)
 
 (setq-default flycheck-javascript-flow-args '("--respect-pragma"))
 (nvm-use "10.7.0")
@@ -39,9 +42,8 @@
       (set (make-local-variable 'js2-mode-show-parse-errors) t)
       (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
   (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
-;;  (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
-  (after-load 'js2-mode
-    (js2-imenu-extras-setup)))
+  (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+  (js2-imenu-extras-setup))
 
 ;; Javascript nests {} and () a lot, so I find this helpful
 
@@ -56,7 +58,7 @@
 (my/connect-javascript-flycheck-backends)
 (my/config-javascript-company-backends)
 
-(setq js-indent-level 2)
+(setq-default js-indent-level 2)
 
 
 (require 'js-comint)
@@ -82,6 +84,15 @@
 			    ))
 (add-hook 'js2-mode-hook (lambda ()
                            (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
+;; TODO: This block might be not needed
+(add-hook 'js-mode-hook
+          (lambda ()
+            ;; Scan the file for nested code blocks
+            (imenu-add-menubar-index)
+            ;; Activate the folding mode
+            (hs-minor-mode t)))
+
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

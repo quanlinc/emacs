@@ -42,7 +42,7 @@
 
 ;; (add-hook 'jde-mode-hook 'my-jde-mode-hook)
 
-(require 'meghanada)
+(require-package 'meghanada)
 (add-hook 'java-mode-hook
           (lambda ()
             ;; meghanada-mode on

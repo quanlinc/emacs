@@ -25,12 +25,5 @@ Selectively runs either `after-make-console-frame-hooks' or
           (lambda () (when sanityinc/initial-frame
                   (run-after-make-frame-hooks sanityinc/initial-frame))))
 
-(add-hook 'js-mode-hook
-          (lambda ()
-            ;; Scan the file for nested code blocks
-            (imenu-add-menubar-index)
-            ;; Activate the folding mode
-            (hs-minor-mode t)))
-
 (provide 'init-frame-hooks)
 ;;; init-frame-hooks.el ends here

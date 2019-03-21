@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'auto-complete)
-(require 'auto-complete-config)
+(require-package 'auto-complete)
+(require-package 'auto-complete-config)
 
 (ac-config-default)
 (global-auto-complete-mode t)

@@ -4,7 +4,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
+             '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 ;;(add-to-list 'package-archives
@@ -12,7 +12,7 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t))
 
 (require 'cl)
 (require 'cl-lib)
@@ -21,44 +21,12 @@
 ;;TODO: slowly reduce the size of the required package list and move towards loading packages on demand using require-package/maybe-require-package
 (defvar required-packages
   '(
-    avy
-    auto-complete
-    ;;TODO figure out how to load theme as it's causing package.el to add trailing dash
-    ;;atom-one-dark
-    color-theme
-    company-flow
     ctags
+    company-flow
     dash
-    diminish
-    dired-single
     etags-select
     etags-table
-    expand-region
-    flycheck
-    flycheck-flow
-    grep-o-matic
-    helm
-    helm-projectile
-    ido-ubiquitous
-    javadoc-lookup
-    js-comint
-    js2-mode
-    js2-refactor
-    json-mode
-    magit
-    meghanada
-    mmm-mode
-    paredit
-    projectile
-    rvm
-    nvm
-    rjsx-mode
     s
-    scss-mode
-    smex
-    web-mode
-    ws-butler
-    xref-js2
     yasnippet
     )
   "A list of packages are ensured to be installed at launch.")

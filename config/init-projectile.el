@@ -2,17 +2,24 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'projectile)
-(projectile-global-mode t)
-;;(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(when (maybe-require-package 'projectile)
+  (add-hook 'after-init-hook 'projectile-mode)
+  (require-package 'helm)
+  (require-package 'helm-projectile)
 
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
+  ;; Shorter modeline
+  (setq-default projectile-mode-line-prefix " Proj")
 
-(add-to-list 'projectile-other-file-alist '("html" "js")) ;; switch from html -> js
-(add-to-list 'projectile-other-file-alist '("js" "html")) ;; switch from js -> html
+  (after-load 'projectile
+    (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+    (setq projectile-completion-system 'helm)
+    (helm-projectile-on)
+
+    (add-to-list 'projectile-other-file-alist '("html" "js")) ;; switch from html -> js
+    (add-to-list 'projectile-other-file-alist '("js" "html")) ;; switch from js -> html
+    ))
 
 (provide 'init-projectile)
 ;;; init-projectile.el ends here

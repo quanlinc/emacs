@@ -75,6 +75,15 @@
 (global-set-key (kbd "C-c C-h") 'hs-hide-block)
 ;;(global-set-key (kbd "") 'hs-hide-all)
 
+;; TODO: seems to conflict with default parenthesis behavior from lisp.el
+;; (when (maybe-require-package 'paredit)
+;;   (autoload 'enable-paredit-mode "paredit"
+;;   "Turn on pseudo-structural editing of Lisp code." t)
+;;   (add-hook 'emacs-lisp-mode-hook       'enable-paredit-mode)
+;;   (add-hook 'lisp-mode-hook             'enable-paredit-mode)
+;;   (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
+;;   (add-hook 'scheme-mode-hook           'enable-paredit-mode)
+;; )
 
 ;; Auto refresh buffers
 (add-hook 'after-init-hook 'global-auto-revert-mode)
@@ -83,7 +92,6 @@
       auto-revert-verbose nil)
 (after-load 'autorevert
   (diminish 'auto-revert-mode))
-
 
 ;; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -136,8 +144,12 @@
 
 ;;ido mode
 (ido-mode t)
+(maybe-require-package 'ido-ubiquitous)
 (setq ido-everywhere t)
 (setq ido-enable-flex-matching t)
+
+;;flex-isearch
+(require-package 'flex-isearch)
 
 ;; bind Alt/Meta + n/p to scroll page up/down
 (global-set-key "\M-n" (lambda() (interactive) (scroll-up 1)))
@@ -186,7 +198,7 @@
 ;;---------------
 ;; Expand region
 ;;---------------
-(require 'expand-region)
+(require-package 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;;---------------
@@ -205,8 +217,9 @@
 (global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
 
+;;---------------
 ;; Huge files
-
+;;---------------
 (require-package 'vlf)
 
 (defun ffap-vlf ()
@@ -223,6 +236,10 @@
   (setq-default beacon-size 20)
   (setq-default beacon-color "#db6df9")
   (add-hook 'after-init-hook 'beacon-mode))
+
+;; trim spaces from end of line
+(when (maybe-require-package 'ws-butler)
+  (add-hook 'prog-mode-hook #'ws-butler-mode))
 
 ;; Automatically prompt avaialble key bindings
 (require-package 'guide-key)

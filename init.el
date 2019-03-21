@@ -53,7 +53,7 @@
 ;;-----------------------
 (require 'init-packages)
 (require 'init-utils)
-(require 'diminish)
+(require-package 'diminish)
 (require 'init-editing-utils)
 (require 'init-dired)
 ;;(require 'init-auto-complete)
@@ -74,9 +74,9 @@
 (require 'helm-config)
 ;;(require 'tern)
 
-
 ;; programming style
 (require 'init-html)
+(require 'init-css)
 (require 'init-java)
 (require 'init-javascript)
 (require 'init-jsdoc)
@@ -121,6 +121,7 @@
      (tern-ac-setup)))
 
 (defun delete-tern-process ()
+  "Delete tern process."
   (interactive)
   (delete-process "Tern"))
 

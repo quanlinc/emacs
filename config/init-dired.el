@@ -13,6 +13,11 @@
     (diredfl-global-mode)))
 
 (after-load 'dired
+  (when (maybe-require-package 'dired-single)
+    (autoload 'dired-single-buffer "dired-single" "" t)
+    (autoload 'dired-single-buffer-mouse "dired-single" "" t)
+    (autoload 'dired-single-magic-buffer "dired-single" "" t)
+    (autoload 'dired-single-toggle-buffer-name "dired-single" "" t))
   (setq dired-recursive-deletes 'top)
   (define-key dired-mode-map [mouse-2] 'dired-find-file)
   (define-key dired-mode-map (kbd "C-c C-q") 'wdired-change-to-wdired-mode))

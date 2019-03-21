@@ -3,6 +3,7 @@
 ;;; Code:
 
 (when (maybe-require-package 'flycheck)
+  (require-package 'flycheck-flow)
   (add-hook 'after-init-hook 'global-flycheck-mode)
 
   ;; Override default flycheck triggers

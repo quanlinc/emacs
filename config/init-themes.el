@@ -1,7 +1,7 @@
 ;;; init-themes.el --- setup default theme
 ;;; Commentary:
 ;;; Code:
-(require-package 'color-theme)
+(require-package 'color-theme-modern)
 (require-package 'atom-one-dark-theme)
 
 (if (display-graphic-p)

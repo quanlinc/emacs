@@ -63,8 +63,8 @@
 (require 'init-gui-frames)
 (require 'init-themes)
 (require 'init-frame-hooks)
-(require 'init-flycheck)
-(require 'flycheck-flow)
+
+;,(require 'flycheck-flow)
 (require 'init-uniquify)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
@@ -73,7 +73,7 @@
 (require 'init-tramp)
 (require 'helm-config)
 ;;(require 'tern)
-
+(require 'init-flycheck)
 ;; programming style
 (require 'init-lisp)
 (require 'init-html)
@@ -83,6 +83,7 @@
 (require 'init-jsdoc)
 (require 'init-terraform)
 (require 'init-git)
+
 ;; jenkins plugin
 (require 'init-jenkins)
 
@@ -115,7 +116,7 @@
 (require 'ws-butler)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
 
-(add-hook 'js-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 (eval-after-load 'tern
   '(progn
      (require 'tern-auto-complete)
@@ -136,12 +137,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
+   ["#21252B" "#E06C75" "#98C379" "#E5C07B" "#61AFEF" "#C678DD" "#56B6C2" "#ABB2BF"])
  '(compilation-message-face (quote default))
  '(custom-safe-themes
    (quote
     ("bf5bdab33a008333648512df0d2b9d9710bdfba12f6a768c7d2c438e1092b633" "3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default)))
- '(fci-rule-color "#3C3D37")
+ '(fci-rule-color "#3E4451")
  '(flycheck-javascript-flow-args nil)
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
  '(highlight-tail-colors
@@ -157,7 +158,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js2-refactor js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags color-theme auto-complete)))
+    (lsp-ui flow-js2-mode groovy-mode dap-java dap-mode company-lsp lsp-java company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags auto-complete)))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

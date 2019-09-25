@@ -42,23 +42,38 @@
 
 ;; (add-hook 'jde-mode-hook 'my-jde-mode-hook)
 
-(require-package 'meghanada)
-(add-hook 'java-mode-hook
-          (lambda ()
-            ;; meghanada-mode on
-            (meghanada-mode t)
-            (flycheck-mode +1)
-            (setq c-basic-offset 2)
-            ;; use code format
-            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
-(cond
-   ((eq system-type 'windows-nt)
-    (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
-    (setq meghanada-maven-path "mvn.cmd"))
-   (t
-    (setq meghanada-java-path "java")
-    (setq meghanada-maven-path "mvn")))
+;; (require-package 'meghanada)
+;; (add-hook 'java-mode-hook
+;;           (lambda ()
+;;             ;; meghanada-mode on
+;;             (meghanada-mode t)
+;;             (flycheck-mode +1)
+;;             (setq c-basic-offset 2)
+;;             ;; use code format
+;;             (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+;; (cond
+;;    ((eq system-type 'windows-nt)
+;;     (setq meghanada-java-path (expand-file-name "bin/java.exe" (getenv "JAVA_HOME")))
+;;     (setq meghanada-maven-path "mvn.cmd"))
+;;    (t
+;;     (setq meghanada-java-path "java")
+;;     (setq meghanada-maven-path "mvn")))
 
+(require-package 'lsp-java)
+(add-hook 'java-mode-hook #'lsp)
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+(require-package 'dap-mode)
+(after-load 'dap-mode
+  (require 'dap-java)
+  (dap-mode 1)
+  (dap-ui-mode 1))
+
+;; (after-load 'lsp-java
+;;   (add-hook 'java-mode-hook #'lsp)
+;;   (require 'company-lsp)
+;;   (push 'company-lsp company-backends)
+;;   (require-package 'dap-mode))
 
 (provide 'init-java)
 ;;; init-java.el ends here

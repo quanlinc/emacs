@@ -8,9 +8,10 @@
 (maybe-require-package 'xref-js2)
 (maybe-require-package 'nvm)
 (maybe-require-package 'js-comint)
-(require-package 'flycheck-flow)
+;(require-package 'flycheck-flow)
 
 (setq-default flycheck-javascript-flow-args '("--respect-pragma"))
+;;(nvm-use "8.10.0")
 (nvm-use "10.7.0")
 (add-to-list 'grep-find-ignored-directories "node_modules")
 
@@ -54,12 +55,11 @@
 ;; prevent indentation from lining up with a prior line's glyph
 ;; this will make it so fighting is less necessary to appease linters
 (setq-default js2-pretty-multiline-declarations nil)
-(my/find-javascript-flycheck-backends)
+(my/find-javascript-flycheck-backends 'js2-mode-hook)
 (my/connect-javascript-flycheck-backends)
 (my/config-javascript-company-backends)
 
 (setq-default js-indent-level 2)
-
 
 (require 'js-comint)
 

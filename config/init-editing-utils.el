@@ -39,13 +39,21 @@
  auto-save-default nil
  ;; Choose one behavior to end a buffer
  ;; Don't add unintentional new lines at the end of buffer
- next-line-add-newlines nil
+ next-line-add-newlines nil)
 
  ;; Always end a file with a newline
  ;;require-final-newline t
 
- ;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
- global-subword-mode t)
+;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
+(global-subword-mode 1)
+(after-load 'subword
+  (diminish 'subword-mode))
+
+(global-company-mode 1)
+(after-load 'company
+  (diminish 'company-mode))
+
+(setq mode-require-final-newline nil)
 
 ;; nice scrolling
 (setq scroll-margin 0

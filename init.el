@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; For debugging error on startup
-;;(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;; toggle the default spelling check feature
 (defconst *spell-check-support-enalbed* t)
@@ -64,7 +64,7 @@
 (require 'init-themes)
 (require 'init-frame-hooks)
 
-;,(require 'flycheck-flow)
+;(require 'flycheck-flow)
 (require 'init-uniquify)
 (require 'init-hippie-expand)
 (require 'init-yasnippet)
@@ -158,7 +158,7 @@
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
-    (lsp-ui flow-js2-mode groovy-mode dap-java dap-mode company-lsp lsp-java company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags auto-complete)))
+    (lsp-mode lsp-ui flow-js2-mode groovy-mode dap-java dap-mode company-lsp lsp-java company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags auto-complete)))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)

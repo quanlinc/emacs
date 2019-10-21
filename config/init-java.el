@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'lsp-java)
+(require 'lsp-java)
 (add-hook 'java-mode-hook #'lsp)
 
 (require-package 'dap-mode)

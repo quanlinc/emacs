@@ -8,7 +8,7 @@
 (maybe-require-package 'xref-js2)
 (maybe-require-package 'nvm)
 (maybe-require-package 'js-comint)
-;(require-package 'flycheck-flow)
+(maybe-require-package 'typescript-mode)
 
 (setq-default flycheck-javascript-flow-args '("--respect-pragma"))
 ;;(nvm-use "8.10.0")
@@ -93,6 +93,11 @@
             ;; Activate the folding mode
             (hs-minor-mode t)))
 
+(when (maybe-require-package 'add-node-modules-path)
+  (after-load 'typescript-mode
+    (add-hook 'typescript-mode-hook 'add-node-modules-path))
+  (after-load 'js2-mode
+    (add-hook 'js2-mode-hook 'add-node-modules-path)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

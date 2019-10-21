@@ -49,8 +49,10 @@
 (after-load 'subword
   (diminish 'subword-mode))
 
+;; Company mode
 (global-company-mode 1)
 (after-load 'company
+  (setq company-idle-delay 0.3)
   (diminish 'company-mode))
 
 (setq mode-require-final-newline nil)
@@ -129,7 +131,7 @@
 (recentf-mode 1)
 
 ;; Keep cursor away from edges when scrolling up/down
-;(require 'smooth-scrolling)
+;;(require 'smooth-scrolling)
 
 ;; (when (fboundp 'linum-mode)
 ;;   (setq display-line-numbers-width 3)

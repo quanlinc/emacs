@@ -177,6 +177,7 @@
 (add-to-list 'auto-mode-alist '("archive-contents\\'" . emacs-lisp-mode))
 
 (require-package 'cl-lib-highlight)
+(maybe-require-package 'rainbow-delimiters)
 (after-load 'lisp-mode
   (rainbow-delimiters-mode t)
   (cl-lib-highlight-initialize))

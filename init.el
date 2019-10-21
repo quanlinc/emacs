@@ -19,24 +19,11 @@
   "This directory contains all snippets for yasnippet")
 
 
-(defvar emacs-tern "/Users/quanlin.chen/projects/tern/emacs/"
-  "tern path")
-
 (add-to-list 'load-path emacs-config-dir)
 (add-to-list 'load-path emacs-site-lisp-dir)
 
-(add-to-list 'load-path emacs-tern)
-(autoload 'tern-mode "tern.el" nil t)
-
-
 (setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/.nvm/versions/node/v10.7.0/bin"))
 (setq exec-path (append exec-path '("/Users/quanlin.chen/.nvm/versions/node/v10.7.0/bin")))
-
-;; (setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/projects/tern/bin"))
-;;     (setq exec-path (append exec-path '("/Users/quanlin.chen/projects/tern/bin")))
-
-;; (add-to-list 'load-path "/Users/quanlin.chen/.nvm/v4.3.1/bin/")
-;; (autoload 'tern-mode "tern.el" nil t)
 
 (require 'init-benchmark)
 ;;----------------------------------------------------------------------------
@@ -115,17 +102,6 @@
 
 (require 'ws-butler)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
-
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
-
-(defun delete-tern-process ()
-  "Delete tern process."
-  (interactive)
-  (delete-process "Tern"))
 
 (provide 'init)
 

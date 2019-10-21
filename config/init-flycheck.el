@@ -85,50 +85,15 @@
 (defun my/config-javascript-company-backends ()
   (require 'company-flow)
   (my/find-javascript-company-backends)
-  ;; (setq-default company-backends
-  ;;   ;; tern works its way in here multiple times.
-  ;;   (remove 'company-tern (remove-duplicates company-backends))
-  ;; )
-  ;; (setq-default company-backends-rjsx-mode
-  ;;   ;; tern works its way in here multiple times.
-  ;;   (remove 'company-tern (remove-duplicates company-backends-rjsx-mode))
-  ;; )
-  ;; (setq-default company-backends-rjsx-mode-raw
-  ;;   ;; tern works its way in here multiple times.
-  ;;   (remove 'company-tern (remove-duplicates company-backends-rjsx-mode-raw))
-  ;; )
   (add-to-list 'company-backends 'company-flow)
-  ;; (add-to-list 'company-backends-rjsx-mode 'company-flow)
 
   (message "company backends for JS %s" company-backends)
   ;; (message "company backends for JSX %s" company-backends-rjsx-mode)
 
   ;; NOTE: We also need to configure flow's backend on a per major-mode basis.
-  ;; (setq-default company-backends-js2-mode
-  ;;   ;; tern works its way in here multiple times.
-  ;;   (remove 'company-tern (remove-duplicates company-backends-js2-mode))
-  ;; )
   ;; (add-to-list 'company-backends-js2-mode 'company-flow)
   ;; (message "company backends (js2mode) (after JS config): %s" company-backends-js2-mode)
-)
-
-;; (defun flow-type-at-pos ()
-;;     "Show flow type at the cursor."
-;;     (interactive)
-;;     (let ((file (buffer-file-name))
-;;           (line (line-number-at-pos))
-;;           (col (current-column))
-;;           (buffer (current-buffer)))
-;;       (switch-to-buffer-other-window "*Shell Command Output*")
-;;       (shell-command
-;;         (format "%s type-at-pos --from emacs %s %d %d"
-;;                 (my/get-node-modules-bin "flow")
-;;                 file
-;;                 line
-;;                 (1+ col)))
-;;       (compilation-mode)
-;;       (switch-to-buffer-other-window buffer))
-;;   )
+  )
 
 (defun flow-type-at-pos ()
   "Show flow type at cursor."
@@ -148,14 +113,6 @@
       (pop-to-buffer "*flow-type*"))
     )
   )
-;; ;;TODO: revist this configuration
-
-;; (add-hook 'clojure-mode-hook
-;;           (lambda () (flycheck-mode t)))
- ;; (add-hook 'js2-mode-hook
- ;;           (lambda () (flycheck-select-checker 'javascript-eslint)))
-;; (add-hook 'js2-mode 'my/config-javascript-company-backends)
-;; (add-hook 'rjsx-mode 'my/config-javascript-company-backends)
 
 (provide 'init-flycheck)
 ;;; init-flycheck.el ends here

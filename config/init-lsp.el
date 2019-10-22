@@ -23,5 +23,18 @@
       company-lsp-async t
       company-lsp-cache-candidates nil)
 
+(after-load 'lsp-ui
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'top-edge
+        lsp-ui-sideline-enable nil
+        lsp-ui-flycheck-enable t
+        lsp-ui-flycheck-list-position 'right
+        lsp-ui-flycheck-live-reporting t
+        lsp-ui-peek-enable t
+        lsp-ui-peek-list-width 60
+        lsp-ui-peek-peek-height 25)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

@@ -10,9 +10,12 @@
 (maybe-require-package 'helm-lsp)
 
 (require 'lsp-mode)
-(require 'lsp-clients)
+(require 'lsp-ui)
 
 (add-hook 'js2-mode-hook 'lsp)
+(add-hook 'typescript-mode-hook 'lsp)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
+(add-hook 'typescript-mode-hook 'flycheck-mode)
 
 ;;(add-hook 'typescript-mode-hook, #'lsp)
 

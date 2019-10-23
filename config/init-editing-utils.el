@@ -150,7 +150,14 @@
 ;; auto-completion in minibuffer
 (icomplete-mode 1)
 
+;; windows
 (winner-mode t)
+
+;; Make "C-x o" prompt for a target window when there are more than 2
+(require-package 'switch-window)
+(setq-default switch-window-shortcut-style 'alphabet)
+(setq-default switch-window-timeout nil)
+(global-set-key (kbd "C-x o") 'switch-window)
 
 ;;ido mode
 (ido-mode t)
@@ -231,6 +238,20 @@
 (global-set-key (kbd "C-c m c") 'mc/edit-lines)
 (global-set-key (kbd "C-c m e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c m a") 'mc/edit-beginnings-of-lines)
+
+;;----------------------------------------------------------------------------
+;; Shift lines up and down with M-up and M-down. When paredit is enabled,
+;; it will use those keybindings. For this reason, you might prefer to
+;; use M-S-up and M-S-down, which will work even in lisp modes.
+;;----------------------------------------------------------------------------
+(require-package 'move-dup)
+(global-set-key [M-up] 'md-move-lines-up)
+(global-set-key [M-down] 'md-move-lines-down)
+(global-set-key [M-S-up] 'md-move-lines-up)
+(global-set-key [M-S-down] 'md-move-lines-down)
+
+(global-set-key (kbd "C-c d") 'md-duplicate-down)
+(global-set-key (kbd "C-c u") 'md-duplicate-up)
 
 ;;---------------
 ;; Huge files

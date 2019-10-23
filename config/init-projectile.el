@@ -8,11 +8,15 @@
   (require-package 'helm-projectile)
 
   ;; Shorter modeline
-  (setq-default projectile-mode-line-prefix " Proj")
+  ;;(setq-default projectile-mode-line-prefix " Proj")
 
+  ;; set the path for where projects live
+  (setq projectile-project-search-path '("/Volumes/Datastore/projects"))
   (after-load 'projectile
     (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+    (diminish 'projectile-mode)
 
     (setq projectile-completion-system 'helm)
     (helm-projectile-on)

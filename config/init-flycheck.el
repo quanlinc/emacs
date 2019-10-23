@@ -5,7 +5,8 @@
 (when (maybe-require-package 'flycheck)
   (require-package 'flycheck-flow)
   (add-hook 'after-init-hook #'global-flycheck-mode)
-
+  (after-load 'flycheck
+    (diminish 'flycheck-mode " Φ"))
   ;; Override default flycheck triggers
   (setq flycheck-check-syntax-automatically '(save idle-change mode-enabled)
         flycheck-idle-change-delay 0.8)

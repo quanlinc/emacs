@@ -55,6 +55,10 @@
   (setq company-idle-delay 0.3)
   (diminish 'company-mode))
 
+;; hide eldoc minor mode
+(after-load 'eldoc
+  (diminish 'eldoc-mode))
+
 (setq mode-require-final-newline nil)
 
 ;; nice scrolling

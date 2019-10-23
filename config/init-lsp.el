@@ -12,6 +12,9 @@
 (require 'lsp-mode)
 (require 'lsp-ui)
 
+(after-load 'lsp-mode
+  (diminish 'lsp-mode))
+
 (add-hook 'js2-mode-hook 'lsp)
 (add-hook 'typescript-mode-hook 'lsp)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)

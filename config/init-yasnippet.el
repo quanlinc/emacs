@@ -1,9 +1,9 @@
 ;;; init-yasnippet.el --- Support for code snippet
 ;;; Commentary:
 ;;; Code:
-
 (require 'yasnippet)
-
+(after-load 'yasnippet
+  (diminish 'yas-minor-mode))
 ;; Allow nested expansions
 (setq yas-triggers-in-field t)
 

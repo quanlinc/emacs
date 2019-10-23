@@ -24,6 +24,7 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/.nvm/versions/node/v10.7.0/bin"))
 (setq exec-path (append exec-path '("/Users/quanlin.chen/.nvm/versions/node/v10.7.0/bin")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 (require 'init-benchmark)
 ;;----------------------------------------------------------------------------

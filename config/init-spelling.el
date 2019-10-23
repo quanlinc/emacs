@@ -1,6 +1,8 @@
 ;;; init-spelling.el --- spell check setting
 ;;; Commentary:
 ;;; Code:
+(setq ispell-program-name  "aspell")
+
 (require 'ispell)
 
 (when (executable-find ispell-program-name)

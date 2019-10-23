@@ -66,7 +66,7 @@
 ;; use avy with all buffer, frame and windows
 (when (maybe-require-package 'avy)
   (setq avy-all-windows 'all-frames)
-  (global-set-key (kbd "C-;") 'avy-goto-char-timer)
+  (global-set-key (kbd "s-;") 'avy-goto-char-timer)
   (global-set-key (kbd "s-w") 'ace-window))
 
 ;; Bind the CTRL plus . "dot" key to go to next tag

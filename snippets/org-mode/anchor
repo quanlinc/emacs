@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: anchor
+# key: anchor
+# --
+:PROPERTIES:
+:CUSTOM_ID: ${1:id}
+:END:

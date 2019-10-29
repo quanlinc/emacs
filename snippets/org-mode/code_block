@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: code_block
+# key: cb
+# --
+#+name: ${1:name}
+#+begin_src ${2:language} ${3:switches} ${4:header_arguments}
+            $0
+#+end_src

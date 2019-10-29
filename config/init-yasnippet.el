@@ -14,6 +14,7 @@
 (define-key yas-minor-mode-map [(tab)] nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 ;; Set Yasnippet's key binding to shift+tab
+;; shift+tab conflicts with org mode
 (define-key yas-minor-mode-map (kbd "<backtab>") 'yas-expand)
 ;; Alternatively use Control-c + tab
 (define-key yas-minor-mode-map (kbd "\C-c TAB") 'yas-expand)

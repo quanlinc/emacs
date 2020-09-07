@@ -17,7 +17,7 @@
 ;; shift+tab conflicts with org mode
 (define-key yas-minor-mode-map (kbd "<backtab>") 'yas-expand)
 ;; Alternatively use Control-c + tab
-(define-key yas-minor-mode-map (kbd "\C-c TAB") 'yas-expand)
+(define-key yas-minor-mode-map (kbd "C-c TAB") 'yas-expand)
 ;; Setup my snippets directory
 (setq yas-snippet-dirs (list
                         emacs-snippet-dir))

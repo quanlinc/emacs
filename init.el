@@ -72,6 +72,9 @@
 (require 'init-terraform)
 (require 'init-git)
 
+;; org mode
+(require 'init-org)
+
 ;; jenkins plugin
 (require 'init-jenkins)
 
@@ -114,56 +117,51 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#21252B" "#E06C75" "#98C379" "#E5C07B" "#61AFEF" "#C678DD" "#56B6C2" "#ABB2BF"])
- '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (sanityinc-tomorrow-night)))
+   (vector "#1d1f21" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#8abeb7" "#c5c8c6"))
+ '(compilation-message-face 'default)
+ '(custom-enabled-themes '(sanityinc-tomorrow-night))
  '(custom-safe-themes
-   (quote
-    ("82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "bf5bdab33a008333648512df0d2b9d9710bdfba12f6a768c7d2c438e1092b633" "3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default)))
- '(fci-rule-color "#3E4451")
+   '("82d2cac368ccdec2fcc7573f24c3f79654b78bf133096f9b40c20d97ec1d8016" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "bf5bdab33a008333648512df0d2b9d9710bdfba12f6a768c7d2c438e1092b633" "3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default))
+ '(fci-rule-color "#373b41")
  '(flycheck-javascript-flow-args nil)
- '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-changes-colors '("#FD5FF0" "#AE81FF"))
  '(highlight-tail-colors
-   (quote
-    (("#3C3D37" . 0)
+   '(("#3C3D37" . 0)
      ("#679A01" . 20)
      ("#4BBEAE" . 30)
      ("#1DB4D0" . 50)
      ("#9A8F21" . 60)
      ("#A75B00" . 70)
      ("#F309DF" . 85)
-     ("#3C3D37" . 100))))
+     ("#3C3D37" . 100)))
  '(magit-diff-use-overlays nil)
  '(package-selected-packages
-   (quote
-    (flx-ido color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized move-dup powerline typescript lsp-mode lsp-ui flow-js2-mode groovy-mode dap-java dap-mode company-lsp lsp-java company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags auto-complete)))
+   '(groovy-mode org-pomodoro writeroom-mode org-cliplink restclient beacon vlf multiple-cursors which-key switch-window helm-lsp doom-modeline recompile-on-save jenkinsfile-mode flx-ido color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized move-dup powerline typescript lsp-mode lsp-ui flow-js2-mode dap-java dap-mode company-lsp lsp-java company-terraform diff-hl diredfl json-mode magit rjsx-mode web-mode whitespace-cleanup-mode nvm flycheck-flow ace-window avy atom-one-dark-theme abyss-theme nyan-mode feature-mode git rainbow-mode company-flow ws-butler jenkins yaml-mode terraform-mode xref-js2 tidy tagedit smex scss-mode rvm repository-root rainbow-delimiters paredit mmm-mode js-doc js-comint javadoc-lookup ido-ubiquitous helm-projectile grep-o-matic grep-a-lot flex-isearch expand-region etags-table etags-select dired-single diminish ctags auto-complete))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#F92672")
-     (40 . "#CF4F1F")
-     (60 . "#C26C0F")
-     (80 . "#E6DB74")
-     (100 . "#AB8C00")
-     (120 . "#A18F00")
-     (140 . "#989200")
-     (160 . "#8E9500")
-     (180 . "#A6E22E")
-     (200 . "#729A1E")
-     (220 . "#609C3C")
-     (240 . "#4E9D5B")
-     (260 . "#3C9F79")
-     (280 . "#A1EFE4")
-     (300 . "#299BA6")
-     (320 . "#2896B5")
-     (340 . "#2790C3")
-     (360 . "#66D9EF"))))
+   '((20 . "#cc6666")
+     (40 . "#de935f")
+     (60 . "#f0c674")
+     (80 . "#b5bd68")
+     (100 . "#8abeb7")
+     (120 . "#81a2be")
+     (140 . "#b294bb")
+     (160 . "#cc6666")
+     (180 . "#de935f")
+     (200 . "#f0c674")
+     (220 . "#b5bd68")
+     (240 . "#8abeb7")
+     (260 . "#81a2be")
+     (280 . "#b294bb")
+     (300 . "#cc6666")
+     (320 . "#de935f")
+     (340 . "#f0c674")
+     (360 . "#b5bd68")))
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
-   (quote
-    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))))
+   '(unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

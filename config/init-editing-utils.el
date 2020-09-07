@@ -154,6 +154,9 @@
 ;; auto-completion in minibuffer
 (icomplete-mode 1)
 
+;; auto-completion with camel case
+(global-set-key  (kbd "M-/") 'hippie-expand)
+
 ;; windows
 (winner-mode t)
 
@@ -282,11 +285,15 @@
   (add-hook 'prog-mode-hook #'ws-butler-mode))
 
 ;; Automatically prompt avaialble key bindings
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence t)
-(add-hook 'after-init-hook 'guide-key-mode)
-(after-load 'guide-key
-  (diminish 'guide-key-mode))
+(require-package 'which-key)
+(which-key-mode)
+(which-key-setup-side-window-right)
+
+;; (require-package 'guide-key)
+;; (setq guide-key/guide-key-sequence t)
+;; (add-hook 'after-init-hook 'guide-key-mode)
+;; (after-load 'guide-key
+;;   (diminish 'guide-key-mode))
 
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here

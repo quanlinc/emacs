@@ -11,8 +11,7 @@
 (maybe-require-package 'typescript-mode)
 
 (setq-default flycheck-javascript-flow-args '("--respect-pragma"))
-;;(nvm-use "8.10.0")
-(nvm-use "10.7.0")
+(nvm-use "12.16.3")
 (add-to-list 'grep-find-ignored-directories "node_modules")
 
 (add-hook 'js2-mode-hook #'js2-refactor-mode)
@@ -55,25 +54,10 @@
 ;; prevent indentation from lining up with a prior line's glyph
 ;; this will make it so fighting is less necessary to appease linters
 (setq-default js2-pretty-multiline-declarations nil)
-(my/find-javascript-flycheck-backends 'js2-mode-hook)
-(my/connect-javascript-flycheck-backends)
-(my/config-javascript-company-backends)
 
 (setq-default js-indent-level 2)
 
 (require 'js-comint)
-
-(setq inferior-js-program-command "/Users/quanlin.chen/.nvm/versions/node/v10.7.0/bin/node")
-
-(setq inferior-js-mode-hook
-      (lambda ()
-        ;; We like nice colors
-        (ansi-color-for-comint-mode-on)
-        ;; Deal with some prompt nonsense
-        (add-to-list
-         'comint-preoutput-filter-functions
-         (lambda (output)
-           (replace-regexp-in-string "\033\\[[0-9]+[GK]" "" output)))))
 
 (add-hook 'js2-mode-hook '(lambda ()
 			    (local-set-key "\C-x\C-e" 'js-send-last-sexp)

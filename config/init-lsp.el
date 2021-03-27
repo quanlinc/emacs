@@ -20,8 +20,6 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'typescript-mode-hook 'flycheck-mode)
 
-;;(add-hook 'typescript-mode-hook, #'lsp)
-
 (push 'company-lsp company-backends)
 
 ;; Disable client-side cache because the LSP server does a better job

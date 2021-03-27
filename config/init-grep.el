@@ -2,21 +2,26 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'repository-root)
-(setq repository-root-matchers (quote (repository-root-matcher/git)))
-(require-package 'grep-o-matic)
-(setq grep-o-matic-ask-about-save nil)
-(setq grep-o-matic-search-patterns (quote ("*.cpp" "*.c" "*.h" "*.awk" "*.sh" "*.py"
-                                           "*.pl" "[Mm]akefile" "*.el" "*handler" "*.java" "*.xml"
-                                           "*.m" "*.mi" "*.rb" "*.sql" "*.js" "*.css" "*.cfg")))
-(add-hook 'grep-mode-hook 'ansi-color-for-comint-mode-on)
+(setq-default grep-highlight-matches t
+              grep-scroll-output t)
 
-(require-package 'grep-a-lot)
-(grep-a-lot-setup-keys)
+(when *is-a-mac*
+  (setq-default locate-command "mdfind"))
 
+(require-package 'wgrep)
+(with-eval-after-load 'grep
+  (dolist (key (list (kbd "C-c C-q") (kbd "w")))
+    (define-key grep-mode-map key 'wgrep-change-to-wgrep-mode)))
 
-(setq grep-command "grep -srni ")
-(setq compilation-scroll-output t)
+(when (and (executable-find "ag")
+           (maybe-require-package 'ag))
+  (require-package 'wgrep-ag)
+  (setq-default ag-highlight-search t)
+  (global-set-key (kbd "M-?") 'ag-project))
+
+(when (and (executable-find "rg")
+           (maybe-require-package 'rg))
+  (global-set-key (kbd "M-?") 'rg-project))
 
 (provide 'init-grep)
 ;;; init-grep.el ends here

@@ -11,7 +11,7 @@
   ;;(setq-default projectile-mode-line-prefix " Proj")
 
   ;; set the path for where projects live
-  (setq projectile-project-search-path '("/Volumes/Datastore/projects"))
+  (setq projectile-project-search-path '("/Users/quanlin.chen/projects"))
   (after-load 'projectile
     (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)

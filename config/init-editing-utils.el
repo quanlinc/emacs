@@ -169,7 +169,7 @@
 ;;ido mode
 (ido-mode t)
 (maybe-require-package 'ido-ubiquitous)
-(setq ido-everywhere t)
+(setq ido-everywhere nil)
 (setq ido-enable-flex-matching t)
 
 ;;flex-isearch
@@ -228,7 +228,7 @@
 ;; Expand region
 ;;---------------
 (require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "M-=") 'er/expand-region)
 
 ;;---------------
 ;; Multi-cursor

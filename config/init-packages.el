@@ -5,10 +5,8 @@
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-;;(add-to-list 'package-archives
-;;             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
@@ -21,11 +19,9 @@
 ;;TODO: slowly reduce the size of the required package list and move towards loading packages on demand using require-package/maybe-require-package
 (defvar required-packages
   '(
-    ctags
     company-flow
     dash
-    etags-select
-    etags-table
+    magit
     s
     yasnippet
     )

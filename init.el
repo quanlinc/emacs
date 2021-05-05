@@ -22,10 +22,6 @@
 (add-to-list 'load-path emacs-config-dir)
 (add-to-list 'load-path emacs-site-lisp-dir)
 
-(setenv "PATH" (concat (getenv "PATH") ":/Users/quanlin.chen/.nvm/versions/node/v12.16.3/bin"))
-(setq exec-path (append exec-path '("/Users/quanlin.chen/.nvm/versions/node/v12.16.3/bin")))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-
 (require 'init-benchmark)
 ;;----------------------------------------------------------------------------
 ;; Adjust garbage collection thresholds during startup, and thereafter
@@ -40,6 +36,7 @@
 ;; Fire up emacs
 ;;-----------------------
 (require 'init-packages)
+(require 'init-exec-path)
 (require 'init-utils)
 (require-package 'diminish)
 (require 'init-editing-utils)

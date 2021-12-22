@@ -70,8 +70,12 @@
 (require 'init-java)
 (require 'init-javascript)
 (require 'init-jsdoc)
+(require 'init-python)
 (require 'init-terraform)
 (require 'init-git)
+(require 'init-yaml)
+(require 'init-toml)
+(require 'init-rust)
 
 ;; org mode
 (require 'init-org)

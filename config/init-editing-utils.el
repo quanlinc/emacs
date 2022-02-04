@@ -83,10 +83,15 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
+;; Folding
+(when (maybe-require-package 'origami)
+  (with-eval-after-load 'origami
+    (define-key origami-mode-map (kbd "C-c C-h") 'origami-toggle-node)))
+
 ;; Show-hide
-(global-set-key (kbd "C-c C-n") 'hs-show-block)
+;;(global-set-key (kbd "C-c C-n") 'hs-show-block)
 ;;(global-set-key (kbd "") 'hs-show-all)
-(global-set-key (kbd "C-c C-h") 'hs-hide-block)
+;;(global-set-key (kbd "C-c C-h") 'hs-hide-block)
 ;;(global-set-key (kbd "") 'hs-hide-all)
 
 ;; TODO: seems to conflict with default parenthesis behavior from lisp.el

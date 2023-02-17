@@ -7,6 +7,7 @@
 (maybe-require-package 'js2-refactor)
 (maybe-require-package 'nvm)
 (maybe-require-package 'typescript-mode)
+(maybe-require-package 'prettier-js)
 
 (setq-default flycheck-javascript-flow-args '("--respect-pragma"))
 

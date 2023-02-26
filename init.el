@@ -55,7 +55,7 @@
 (require 'init-projectile)
 (require 'init-grep)
 (require 'init-tramp)
-(require 'helm-config)
+;; (require 'helm-config)
 (helm-mode 1)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to do persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal

@@ -3,8 +3,8 @@
 ;;; Code:
 
 (require-package 'git-blamed)
-(require-package 'gitignore-mode)
-(require-package 'gitconfig-mode)
+;; (require-package 'gitignore-mode)
+;; (require-package 'gitconfig-mode)
 (when (maybe-require-package 'git-timemachine)
   (global-set-key (kbd "C-x v t") 'git-timemachine-toggle))
 

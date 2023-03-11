@@ -21,10 +21,7 @@
 (defvar required-packages
   '(
     company-flow
-    dash
-    magit
     s
-    yasnippet
     )
   "A list of packages are ensured to be installed at launch.")
 

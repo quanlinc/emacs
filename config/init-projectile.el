@@ -8,7 +8,7 @@
   (require-package 'helm-projectile)
 
   ;; Shorter modeline
-  ;;(setq-default projectile-mode-line-prefix " Proj")
+  (setq-default projectile-mode-line-prefix " Proj")
 
   ;; set the path for where projects live
   (setq projectile-project-search-path '("/Users/quanlin.chen/projects"))

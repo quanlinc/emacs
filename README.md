@@ -1,7 +1,7 @@
-##Emacs configuration
+# Emacs configuration
 =====
 
-######Personal emacs settings
+## Personal emacs settings
 
 Below is a list of modules per mode's configuration
 

@@ -11,11 +11,11 @@
 
 (defvar root-dir (file-name-directory load-file-name)
   "The root dir of Emacs configuration.")
-(defvar emacs-config-dir (concat root-dir "/config/")
+(defvar emacs-config-dir (concat root-dir "config/")
   "This directory houses all of the main configuration")
-(defvar emacs-site-lisp-dir (concat root-dir "/site-lisp/")
+(defvar emacs-site-lisp-dir (concat root-dir "site-lisp/")
   "This directory houses other extensions and git submodules")
-(defvar emacs-snippet-dir (concat root-dir "/snippets/")
+(defvar emacs-snippet-dir (concat root-dir "snippets/")
   "This directory contains all snippets for yasnippet")
 
 
@@ -42,9 +42,8 @@
 (require 'init-editing-utils)
 (require 'init-dash)
 (require 'init-dired)
-;;(require 'init-auto-complete)
 (require 'flex-isearch)
-(require 'init-company)
+(require 'init-corfu)
 (require 'init-mmm)
 (require 'init-nix)
 (require 'init-gui-frames)
@@ -65,6 +64,7 @@
 
 (require 'init-flycheck)
 (require 'init-lsp)
+(require 'prisma-mode)
 ;; programming style
 (require 'init-lisp)
 (require 'init-html)

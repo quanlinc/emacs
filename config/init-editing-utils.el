@@ -49,12 +49,6 @@
 (after-load 'subword
   (diminish 'subword-mode))
 
-;; Company mode
-(global-company-mode 1)
-(after-load 'company
-  (setq company-idle-delay 0.3)
-  (diminish 'company-mode))
-
 ;; hide eldoc minor mode
 (after-load 'eldoc
   (diminish 'eldoc-mode))
@@ -86,7 +80,9 @@
 ;; Folding
 (when (maybe-require-package 'origami)
   (with-eval-after-load 'origami
-    (define-key origami-mode-map (kbd "C-c C-h") 'origami-toggle-node)))
+    (define-key origami-mode-map (kbd "C-c C-h") 'origami-toggle-node)
+    (define-key origami-mode-map (kbd "C-c f") 'origami-recursively-toggle-node)
+    (define-key origami-mode-map (kbd "C-c F") 'origami-toggle-all-nodes)))
 
 ;; Show-hide
 ;;(global-set-key (kbd "C-c C-n") 'hs-show-block)

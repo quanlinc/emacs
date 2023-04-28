@@ -20,7 +20,6 @@
 ;;TODO: slowly reduce the size of the required package list and move towards loading packages on demand using require-package/maybe-require-package
 (defvar required-packages
   '(
-    company-flow
     s
     )
   "A list of packages are ensured to be installed at launch.")

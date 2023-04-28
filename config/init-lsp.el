@@ -5,7 +5,6 @@
 (maybe-require-package 'lsp-mode)
 (maybe-require-package 'lsp-java)
 (maybe-require-package 'lsp-ui)
-(maybe-require-package 'company-lsp)
 (maybe-require-package 'lsp-treemacs)
 (maybe-require-package 'helm-lsp)
 
@@ -20,12 +19,6 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'typescript-mode-hook 'flycheck-mode)
 
-(push 'company-lsp company-backends)
-
-;; Disable client-side cache because the LSP server does a better job
-(setq company-transformers nil
-      company-lsp-async t
-      company-lsp-cache-candidates nil)
 
 (after-load 'lsp-ui
   (setq lsp-ui-doc-enable t

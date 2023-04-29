@@ -9,22 +9,24 @@
 (setq completion-styles '(orderless basic)
       completion-category-defaults nil
       completion-category-overrides nil)
-(setq completino-cycle-threshold 4)
+(setq completion-cycle-threshold 4)
 
 (when (maybe-require-package 'corfu)
   (setq-default corfu-auto t)
   (setq-default corfu-quit-no-match 'separator)
   (add-hook 'after-init-hook 'global-corfu-mode)
+  (add-hook 'corfu-mode-hook #'corfu-popupinfo-mode)
 
-  (when (maybe-require-package 'corfu-doc)
-    (with-eval-after-load 'corfu
-      (add-hook 'corfu-mode-hook #'corfu-doc-mode)))
-  ;;TODO: kind-icon
   (when (maybe-require-package 'kind-icon)
     (with-eval-after-load 'corfu
       (add-to-list 'corfu-margin-formatters #'kind-icon-margin-formatter)
-
-      (kind-icon-default-face 'corfu-default)))
+      (setq-default kind-icon-default-face 'corfu-default)
+      (add-hook 'my-completion-ui-mode-hook
+                (lambda ()
+                  (setq completion-in-region-function
+                        (kind-icon-enhance-completion
+                         completion-in-region-function))))
+      ))
   )
 
 

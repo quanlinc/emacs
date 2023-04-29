@@ -7,10 +7,9 @@ Below is a list of modules per mode's configuration
 
  File name          | Comment
 --------------------|--------------------------------------------------------------------------------------------------------------------------------
- init-auto-complete | auto complete configuration
  init-benchmark     | measure how fast emacs loads
  init-c             | c coding style, legacy, good to have though
- init-company       | company code
+ init-corfu         | in-buffer completion
  init-css           | css, less, sass configurations
  init-csv           | Read csv file
  init-dash          | Integrate with the Mac app "Dash"

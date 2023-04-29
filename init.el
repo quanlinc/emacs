@@ -22,6 +22,10 @@
 (add-to-list 'load-path emacs-config-dir)
 (add-to-list 'load-path emacs-site-lisp-dir)
 
+;; known bug to MacOS Ventura, will be fixed in emacs 29.x
+;; https://emacs.stackexchange.com/questions/74289/emacs-28-2-error-in-macos-ventura-image-type-invalid-image-type-svg
+(add-to-list 'image-types 'svg)
+
 (require 'init-benchmark)
 ;;----------------------------------------------------------------------------
 ;; Adjust garbage collection thresholds during startup, and thereafter

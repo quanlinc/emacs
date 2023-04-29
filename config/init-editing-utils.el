@@ -6,34 +6,43 @@
 ;; Personal preferences
 ;;-------------------------
 (setq-default
-;; the blinking cursor is nothing, but an annoyance
+ ;; the blinking cursor is nothing, but an annoyance
  blink-cursor-mode -1
-;; No splash screen please ... jeez
+ ;; set default bookmark file location
+ bookmark-default-file (locate-user-emacs-file ".bookmarks.el")
+ ;; set max buffer menu size so that I won't get into too many files open error
+ buffers-menu-max-size 50
+ ;; No splash screen please ... jeez
  inhibit-startup-message t
-;; Always display line and column numbers
+ ;; Always display line and column numbers
  column-number-mode t
  line-number-mode t
-;; display time
+ ;; Don't create lock file please
+ create-lockfiles nil
+ ;; ediff layout
+ ediff-split-window-function 'split-window-horizontally
+ ediff-window-setup-function 'ediff-setup-windows-plain
+ ;; display time
  display-time-mode t
-;; display file size
+ ;; display file size
  size-indication-mode t
-;; Never insert tabs
+ ;; Never insert tabs
  indent-tabs-mode nil
-;; Remove text in active region if inserting text
+ ;; Remove text in active region if inserting text
  delete-selection-mode 1
-;; Real emacs knights don't use shift to mark things
+ ;; Real emacs knights don't use shift to mark things
  shift-select-mode nil
-;; Move files to trash when deleting
+ ;; Move files to trash when deleting
  delete-by-moving-to-trash t
-;; Show keystrokes in progress
+ ;; Show keystrokes in progress
  echo-keystrokes 0.1
-;; Allow pasting selection outside of Emacs
+ ;; Allow pasting selection outside of Emacs
  x-select-enable-clipboard t
-;; Transparently open compressed files
+ ;; Transparently open compressed files
  auto-compression-mode t
-;; Enable syntax highlighting for older Emacsen that have it off
+ ;; Enable syntax highlighting for older Emacsen that have it off
  global-font-lock-mode t
-;; Disable backup/autosave
+ ;; Disable backup/autosave
  make-backup-files nil
  backup-inhibited t
  auto-save-default nil
@@ -41,8 +50,19 @@
  ;; Don't add unintentional new lines at the end of buffer
  next-line-add-newlines nil)
 
- ;; Always end a file with a newline
- ;;require-final-newline t
+;; Always end a file with a newline
+;;require-final-newline t
+
+;;; New line behavior
+(global-set-key (kbd "RET") 'newline-and-indent)
+
+(defun sanityinc/newline-at-end-of-line ()
+  "Move to end of line, enter a newline, and reindent."
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent))
+
+(global-set-key (kbd "S-<return>") 'sanityinc/newline-at-end-of-line)
 
 ;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
 (global-subword-mode 1)
@@ -54,6 +74,21 @@
   (diminish 'eldoc-mode))
 
 (setq mode-require-final-newline nil)
+
+(when (require-package 'rainbow-delimiters)
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+;;; Zap *up* to char is a handy pair for zap-to-char
+(global-set-key (kbd "M-Z") 'zap-up-to-char)
+
+;;; Page break lines
+
+(when (maybe-require-package 'page-break-lines)
+  (add-hook 'after-init-hook 'global-page-break-lines-mode)
+  (with-eval-after-load 'page-break-lines
+    (diminish 'page-break-lines-mode)))
+
+(global-set-key (kbd "M-j") 'join-line)
 
 ;; nice scrolling
 (setq scroll-margin 0
@@ -84,11 +119,7 @@
     (define-key origami-mode-map (kbd "C-c f") 'origami-recursively-toggle-node)
     (define-key origami-mode-map (kbd "C-c F") 'origami-toggle-all-nodes)))
 
-;; Show-hide
-;;(global-set-key (kbd "C-c C-n") 'hs-show-block)
-;;(global-set-key (kbd "") 'hs-show-all)
-;;(global-set-key (kbd "C-c C-h") 'hs-hide-block)
-;;(global-set-key (kbd "") 'hs-hide-all)
+(global-origami-mode 1)
 
 ;; TODO: seems to conflict with default parenthesis behavior from lisp.el
 ;; (when (maybe-require-package 'paredit)
@@ -135,21 +166,19 @@
 ;; Save a list of recent files visited.
 (recentf-mode 1)
 
-;; Keep cursor away from edges when scrolling up/down
-;;(require 'smooth-scrolling)
 
-;; (when (fboundp 'linum-mode)
-;;   (setq display-line-numbers-width 3)
-;;   (add-hook 'prog-mode-hook 'linum-mode))
+(when (fboundp 'linum-mode)
+  (setq display-line-numbers-width 3)
+  (add-hook 'prog-mode-hook 'linum-mode))
 
-;; (when (maybe-require-package 'goto-line-preview)
-;;   (global-set-key [remap goto-line] 'goto-line-preview)
+(when (maybe-require-package 'goto-line-preview)
+  (global-set-key [remap goto-line] 'goto-line-preview)
 
-;;   (when (fboundp 'linum-mode)
-;;     (defun sanityinc/with-display-line-numbers (f &rest args)
-;;       (let ((display-line-numbers t))
-;;         (apply f args)))
-;;     (advice-add 'goto-line-preview :around #'sanityinc/with-display-line-numbers)))
+  (when (fboundp 'linum-mode)
+    (defun sanityinc/with-display-line-numbers (f &rest args)
+      (let ((display-line-numbers t))
+        (apply f args)))
+    (advice-add 'goto-line-preview :around #'sanityinc/with-display-line-numbers)))
 
 
 ;; auto-completion in minibuffer
@@ -169,8 +198,9 @@
 
 ;;ido mode
 (ido-mode t)
-(maybe-require-package 'ido-ubiquitous)
+(maybe-require-package 'ido-completing-read+)
 (setq ido-everywhere nil)
+(ido-ubiquitous-mode t)
 (setq ido-enable-flex-matching t)
 
 ;;flex-isearch
@@ -282,7 +312,7 @@
 (when (maybe-require-package 'ws-butler)
   (add-hook 'prog-mode-hook #'ws-butler-mode))
 
-;; Automatically prompt avaialble key bindings
+;; Automatically prompt available key bindings
 (require-package 'which-key)
 (which-key-mode)
 (which-key-setup-side-window-right)

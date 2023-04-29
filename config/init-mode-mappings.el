@@ -3,14 +3,15 @@
 ;;; Code:
 
 (add-to-list 'auto-mode-alist '(".js$" . js2-mode))
+(add-to-list 'auto-mode-alist '(".ts$" . typescript-mode))
 (add-to-list 'auto-mode-alist '(".less$" . less-css-mode))
 (add-to-list 'auto-mode-alist '(".css$" . css-mode))
 (add-to-list 'auto-mode-alist '(".html$" . angular-html-mode))
 (when (maybe-require-package 'rjsx-mode)
-(add-to-list 'auto-mode-alist '(".jsx" . rjsx-mode)))
+  (add-to-list 'auto-mode-alist '(".jsx" . rjsx-mode)))
 ;;(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
 (add-to-list 'auto-mode-alist '(".java$" . java-mode))
-;;(add-to-list 'auto-mode-alist '(".htm$" . html-mode))
+;; (add-to-list 'auto-mode-alist '(".htm$" . html-mode))
 ;; org mode
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode))
 

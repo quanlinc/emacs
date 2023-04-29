@@ -2,41 +2,48 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'lsp-java)
-(add-hook 'java-mode-hook #'lsp)
+(require-package 'eglot-java)
+(add-hook 'java-mode-hook 'eglot-java-mode)
 
+;; TODO doesn't look like eglot supports dap mode, and eglot java doesn't seem to work with lombok very well
 (require-package 'dap-mode)
+
 (after-load 'dap-mode
   (require 'dap-java)
   (dap-mode 1)
   (dap-ui-mode 1))
 
+
+
 (setenv "JAVA_HOME"  "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/")
-(setq lsp-java-java-path "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/bin/java")
 
 
-(setq lsp-java-configuration-runtimes '[(:name "JavaSE-1.8"
-                                               :path "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/")
-                                        (:name "JavaSE-11"
-                                               :path "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/"
-                                               :default t)])
+;; (setq lsp-java-java-path "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/bin/java")
 
-(setq lsp-java-vmargs
-      '(
-        "-noverify"
-        "-Xmx1G"
-        "-XX:+UseG1GC"
-        "-XX:+UseStringDeduplication"
-        "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"))
 
-(dap-register-debug-template "My Runner"
-                             (list :type "java"
-                                   :request "launch"
-                                   :args ""
-                                   :vmArgs "-ea -Dmyapp.instance.name=myapp_1"
-                                   :projectName "demo"
-                                   :mainClass "com.example.demo.DemoApplication"
-                                   :env '(("DEV" . "1"))))
+;; (setq lsp-java-configuration-runtimes '[(:name "JavaSE-1.8"
+;;                                                :path "/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/")
+;;                                         (:name "JavaSE-11"
+;;                                                :path "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/"
+;;                                                :default t)])
+
+;; (setq lsp-java-vmargs
+;;       '(
+;;         "-noverify"
+;;         "-Xmx1G"
+;;         "-XX:+UseG1GC"
+;;         "-XX:+UseStringDeduplication"
+;;         "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"))
+
+;; (setq eglot-java-eclipse-jdt-args
+;;       '(
+;;         "-noverify"
+;;         "-Xmx1G"
+;;         "-XX:+UseG1GC"
+;;         "-XX:+UseStringDeduplication"
+;;         "-javaagent:~/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
+;;         "-Xbootclasspath/a:~/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"))
+
 
 ;; Fix compile escape codes
 (add-hook 'compilation-filter-hook

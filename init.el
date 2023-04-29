@@ -67,7 +67,7 @@
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
 (require 'init-flycheck)
-(require 'init-lsp)
+(require 'init-eglot)
 (require 'prisma-mode)
 ;; programming style
 (require 'init-lisp)
@@ -83,6 +83,7 @@
 (require 'init-yaml)
 (require 'init-toml)
 (require 'init-rust)
+(require 'init-docker)
 
 ;; org mode
 (require 'init-org)

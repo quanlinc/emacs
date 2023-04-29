@@ -44,16 +44,13 @@
   (add-hook 'js2-jsx-mode-hook (lambda () (setq mode-name "JSX2")))
   (js2-imenu-extras-setup))
 
-;; colorize parenthesis and curly braces
-(require-package 'rainbow-delimiters)
-(dolist (hook '(js2-mode-hook js-mode-hook json-mode-hook))
-  (add-hook hook 'rainbow-delimiters-mode))
-
 ;; prevent indentation from lining up with a prior line's glyph
 ;; this will make it so fighting is less necessary to appease linters
 (setq-default js2-pretty-multiline-declarations nil)
 
+;; default indentation
 (setq-default js-indent-level 2)
+(setq-default typescript-indent-level 2)
 
 ;; In Emacs >= 25, the following is an alias for js-indent-level
 (setq-default js2-basic-offset 2)
@@ -77,7 +74,7 @@
 
   (define-minor-mode inferior-js-keys-mode
     "Bindings for communicating with an inferior js interpreter."
-    nil " InfJS" inferior-js-minor-mode-map)
+    :init-value nil :lighter " InfJS" inferior-js-minor-mode-map)
 
   (dolist (hook '(js2-mode-hook js-mode-hook))
     (add-hook hook 'inferior-js-keys-mode)))
@@ -86,24 +83,11 @@
   (add-hook 'comint-output-filter-functions 'js-comint-process-output))
 (add-hook 'inferior-js-mode-hook 'inferior-js-mode-hook-setup t)
 
-
-;; (add-hook 'js2-mode-hook '(lambda ()
-;; 			    (local-set-key "\C-x\C-e" 'js-send-last-sexp)
-;; 			    (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
-;; 			    (local-set-key "\C-cb" 'js-send-buffer)
-;; 			    (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
-;; 			    (local-set-key "\C-cl" 'js-load-file-and-go)
-;; 			    ))
-
-
 (when (maybe-require-package 'add-node-modules-path)
-  (after-load 'typescript-mode
-    (add-hook 'typescript-mode-hook 'add-node-modules-path)
-    (add-hook 'typescript-mode-hook 'prettier-js-mode)
-    (add-hook 'typescript-mode-hook 'eglot-ensure))
-  (after-load 'js2-mode
-    (add-hook 'js2-mode-hook 'add-node-modules-path)
-    (add-hook 'js2-mode-hook 'eglot-ensure)))
+  (dolist (mode '(typescript-mode js-mode js2-mode))
+    (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)
+    (add-hook (derived-mode-hook-name mode) 'prettier-js)
+    (add-hook (derived-mode-hook-name mode) 'eglot-ensure)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

@@ -2,18 +2,17 @@
 ;;; Commentary:
 ;;; Code:
 
+;; TODO: figure out how to get lombok work with eglot
 (require-package 'eglot-java)
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
 ;; TODO doesn't look like eglot supports dap mode, and eglot java doesn't seem to work with lombok very well
-(require-package 'dap-mode)
+;; (require-package 'dap-mode)
 
-(after-load 'dap-mode
-  (require 'dap-java)
-  (dap-mode 1)
-  (dap-ui-mode 1))
-
-
+;; (after-load 'dap-mode
+;;   (require 'dap-java)
+;;   (dap-mode 1)
+;;   (dap-ui-mode 1))
 
 (setenv "JAVA_HOME"  "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/")
 
@@ -33,17 +32,16 @@
 ;;         "-Xmx1G"
 ;;         "-XX:+UseG1GC"
 ;;         "-XX:+UseStringDeduplication"
-;;         "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"))
+;;         "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lnnombok-1.18.20.jar"))
 
-;; (setq eglot-java-eclipse-jdt-args
-;;       '(
-;;         "-noverify"
-;;         "-Xmx1G"
-;;         "-XX:+UseG1GC"
-;;         "-XX:+UseStringDeduplication"
-;;         "-javaagent:~/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
-;;         "-Xbootclasspath/a:~/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"))
-
+(setq eglot-java-eclipse-jdt-args
+      '(
+        "-Xmx1G"
+        "-XX:+UseG1GC"
+        "-XX:+UseStringDeduplication"
+        ;; "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
+        ;; "-Xbootclasspath/a:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
+        ))
 
 ;; Fix compile escape codes
 (add-hook 'compilation-filter-hook

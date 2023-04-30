@@ -62,9 +62,7 @@ locate PACKAGE."
 (package-initialize)
 
 (defun packages-installed-p ()
-  (cl-loop for p in required-packages
-           when (not (package-installed-p p)) do (return nil)
-           finally (cl-return t)))
+  (cl-every 'package-installed-p required-packages))
 
 (unless (packages-installed-p)
   ;; check for new packages (package versions)

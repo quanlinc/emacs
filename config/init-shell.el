@@ -1,6 +1,7 @@
 ;;; init-shell.el --- Shell stuff
 ;;; Commentary:
 ;;; Code:
+(require-package 'vterm)
 
 (setq binary-process-input t)
 (setq w32-quote-process-args ?\")

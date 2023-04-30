@@ -3,18 +3,21 @@
 ;;; Code:
 
 (require 'package)
+(require 'cl-lib)
+
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
 ;; (add-to-list 'package-archives
 ;;              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+;; Official MELPA Mirror, in case necessary.
+;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
+
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/") t))
-
-(require 'cl)
-(require 'cl-lib)
 
 
 ;;TODO: slowly reduce the size of the required package list and move towards loading packages on demand using require-package/maybe-require-package
@@ -59,9 +62,9 @@ locate PACKAGE."
 (package-initialize)
 
 (defun packages-installed-p ()
-  (loop for p in required-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+  (cl-loop for p in required-packages
+           when (not (package-installed-p p)) do (return nil)
+           finally (cl-return t)))
 
 (unless (packages-installed-p)
   ;; check for new packages (package versions)

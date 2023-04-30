@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(define-obsolete-function-alias 'after-load 'with-eval-after-load "")
+
 (defun indent-block (from to)
   (interactive "r")
   (indent-rigidly from to tab-width))

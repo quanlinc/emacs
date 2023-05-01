@@ -8,7 +8,7 @@
     (add-hook hook 'rainbow-mode)))
 
 ;;; Embedding in html
-(after-load 'mmm-vars
+(with-eval-after-load 'mmm-vars
   (mmm-add-group
    'html-css
    '((css-cdata

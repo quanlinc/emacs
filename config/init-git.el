@@ -14,7 +14,7 @@
   (global-set-key (kbd "C-x M-g") 'magit-dispatch))
 
 
-(after-load 'magit
+(with-eval-after-load 'magit
   (define-key magit-status-mode-map (kbd "C-M-<up>") 'magit-section-up))
 
 

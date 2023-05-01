@@ -2,7 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'yasnippet)
-(after-load 'yasnippet
+(with-eval-after-load 'yasnippet
   (diminish 'yas-minor-mode))
 ;; Allow nested expansions
 (setq yas-triggers-in-field t)

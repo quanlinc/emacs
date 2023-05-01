@@ -16,7 +16,7 @@
 
   ;; set the path for where projects live
   (setq projectile-project-search-path '("~/projects"))
-  (after-load 'projectile
+  (with-eval-after-load 'projectile
     (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 

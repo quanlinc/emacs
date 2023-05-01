@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: arrow-function
+# key: af
+# --
+const ${1:name} = async ($2:arg) => {
+    $0
+}

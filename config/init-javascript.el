@@ -22,7 +22,7 @@
 ;; js2-mode
 ;; Change some defaults: customize them to override
 (setq-default js2-bounce-indent-p nil)
-(after-load 'js2-mode
+(with-eval-after-load 'js2-mode
   ;; Disable js2 mode's syntax error highlighting by default...
   (setq-default js2-mode-show-parse-errors nil
                 js2-strict-missing-semi-warning nil

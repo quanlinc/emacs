@@ -2,6 +2,6 @@
 # name: Test case
 # key: it
 # --
-it(${1:description}, () => {
+it(${1:description}, ${2:async}() => {
   $0
 });

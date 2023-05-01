@@ -1,4 +1,4 @@
-;;; init-java.el --- Java  development suport
+;;; init-java.el --- Java  development support
 ;;; Commentary:
 ;;; Code:
 
@@ -13,8 +13,8 @@
 ;;   (require 'dap-java)
 ;;   (dap-mode 1)
 ;;   (dap-ui-mode 1))
-
-(setenv "JAVA_HOME"  "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/")
+;;(setenv "JAVA_HOME" "/Users/tranchen/Library/Java/JavaVirtualMachines/corretto-17.0.7/Contents/Home/")
+;;(setenv "JAVA_HOME"  "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/")
 
 
 ;; (setq lsp-java-java-path "/opt/homebrew/Cellar/openjdk@11/11.0.18/libexec/openjdk.jdk/Contents/Home/bin/java")
@@ -36,19 +36,20 @@
 
 (setq eglot-java-eclipse-jdt-args
       '(
+        "-noverify"
         "-Xmx1G"
         "-XX:+UseG1GC"
         "-XX:+UseStringDeduplication"
-        ;; "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
-        ;; "-Xbootclasspath/a:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar"
+        "-javaagent:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20.jar"
+        "-Xbootclasspath/a:/Users/tranchen/.m2/repository/org/projectlombok/lombok/1.18.20.jar"
         ))
 
 ;; Fix compile escape codes
-(add-hook 'compilation-filter-hook
-          (lambda ()  (ansi-color-apply-on-region (point-min) (point-max))))
+;; (add-hook 'compilation-filter-hook
+;;           (lambda ()  (ansi-color-apply-on-region (point-min) (point-max))))
 
-(add-hook 'dap-stopped-hook
-          (lambda (arg) (call-interactively #'dap-hydra)))
+;; (add-hook 'dap-stopped-hook
+;;           (lambda (arg) (call-interactively #'dap-hydra)))
 
 
 (provide 'init-java)

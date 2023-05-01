@@ -9,7 +9,7 @@
                   javascript-mode-hook))
     (add-hook hook 'flyspell-prog-mode)))
 
-(after-load 'flyspell
-            (add-to-list 'flyspell-prog-text-faces 'nxml-text-face))
+(with-eval-after-load 'flyspell
+  (add-to-list 'flyspell-prog-text-faces 'nxml-text-face))
 
 (provide 'init-flyspell)

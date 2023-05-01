@@ -66,11 +66,11 @@
 
 ;; Always use subword mode (causes keys lke \M-f \m-b to operate over individual chunks of camel case words
 (global-subword-mode 1)
-(after-load 'subword
+(with-eval-after-load 'subword
   (diminish 'subword-mode))
 
 ;; hide eldoc minor mode
-(after-load 'eldoc
+(with-eval-after-load 'eldoc
   (diminish 'eldoc-mode))
 
 (setq mode-require-final-newline nil)
@@ -136,7 +136,7 @@
 ;; Also auto refresh dired
 (setq global-auto-revert-non-file-buffers t
       auto-revert-verbose nil)
-(after-load 'autorevert
+(with-eval-after-load 'autorevert
   (diminish 'auto-revert-mode))
 
 ;; Answering just 'y' or 'n' will do

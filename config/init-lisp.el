@@ -36,7 +36,7 @@
 
 (global-set-key [remap eval-expression] 'pp-eval-expression)
 
-(after-load 'lisp-mode
+(with-eval-after-load 'lisp-mode
   (define-key emacs-lisp-mode-map (kbd "C-x C-e") 'sanityinc/eval-last-sexp-or-region))
 
 (when (maybe-require-package 'ipretty)
@@ -82,9 +82,9 @@
       (funcall sanityinc/repl-switch-function sanityinc/repl-original-buffer)
     (error "No original buffer")))
 
-(after-load 'elisp-mode
+(with-eval-after-load 'elisp-mode
   (define-key emacs-lisp-mode-map (kbd "C-c C-z") 'sanityinc/switch-to-ielm))
-(after-load 'ielm
+(with-eval-after-load 'ielm
   (define-key ielm-map (kbd "C-c C-z") 'sanityinc/repl-switch-back))
 
 ;; ----------------------------------------------------------------------------
@@ -214,7 +214,7 @@
 
 (require-package 'macrostep)
 
-(after-load 'lisp-mode
+(with-eval-after-load 'lisp-mode
   (define-key emacs-lisp-mode-map (kbd "C-c e") 'macrostep-expand))
 
 
@@ -229,7 +229,7 @@
       (rainbow-mode)))
   (add-hook 'emacs-lisp-mode-hook 'sanityinc/enable-rainbow-mode-if-theme)
   (add-hook 'help-mode-hook 'rainbow-mode)
-  (after-load 'rainbow-mode
+  (with-eval-after-load 'rainbow-mode
     (diminish 'rainbow-mode)))
 
 (when (maybe-require-package 'highlight-quoted)
@@ -238,12 +238,12 @@
 
 (when (maybe-require-package 'flycheck)
   (require-package 'flycheck-package)
-  (after-load 'flycheck
-    (after-load 'elisp-mode
+  (with-eval-after-load 'flycheck
+    (with-eval-after-load 'elisp-mode
       (flycheck-package-setup))))
 
 ;; ERT
-(after-load 'ert
+(with-eval-after-load 'ert
   (define-key ert-results-mode-map (kbd "g") 'ert-results-rerun-all-tests))
 
 

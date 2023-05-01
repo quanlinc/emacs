@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: destructingObject
+# key: dob
+# --
+
+const {${1:propertyName}} = ${2:objectToDestruct}

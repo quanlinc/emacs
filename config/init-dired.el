@@ -9,10 +9,10 @@
   (when gls (setq insert-directory-program gls)))
 
 (when (maybe-require-package 'diredfl)
-  (after-load 'dired
+  (with-eval-after-load 'dired
     (diredfl-global-mode)))
 
-(after-load 'dired
+(with-eval-after-load 'dired
   (when (maybe-require-package 'dired-single)
     (autoload 'dired-single-buffer "dired-single" "" t)
     (autoload 'dired-single-buffer-mouse "dired-single" "" t)
@@ -23,7 +23,7 @@
   (define-key dired-mode-map (kbd "C-c C-q") 'wdired-change-to-wdired-mode))
 
 (when (maybe-require-package 'diff-hl)
-  (after-load 'dired
+  (with-eval-after-load 'dired
     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
 
 (provide 'init-dired)

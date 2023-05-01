@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: destructingArray
+# key: dar
+# --
+
+const [${1:propertyName}] = ${2:arrayToDestruct}

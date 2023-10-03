@@ -84,10 +84,17 @@
 (add-hook 'inferior-js-mode-hook 'inferior-js-mode-hook-setup t)
 
 (when (maybe-require-package 'add-node-modules-path)
-  (dolist (mode '(typescript-mode js-mode js2-mode))
+  (dolist (mode '(typescript-mode js2-mode))
     (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)
-    (add-hook (derived-mode-hook-name mode) 'prettier-js)
-    (add-hook (derived-mode-hook-name mode) 'eglot-ensure)))
+    (add-hook (derived-mode-hook-name mode) 'prettier-js-mode)
+    (add-hook (derived-mode-hook-name mode) 'lsp-mode)))
+
+(advice-add 'json-parse-buffer :around
+            (lambda (orig &rest rest)
+              (save-excursion
+                (while (re-search-forward "\\\\u0000" nil t)
+                  (replace-match "")))
+              (apply orig rest)))
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

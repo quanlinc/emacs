@@ -14,7 +14,9 @@
     (define-key grep-mode-map key 'wgrep-change-to-wgrep-mode)))
 
 (when (and (executable-find "ag")
-           (maybe-require-package 'ag))
+;;           (maybe-require-package 'ag)
+           (maybe-require-package 'helm-ag)
+           )
   (require-package 'wgrep-ag)
   (setq-default ag-highlight-search t)
   (global-set-key (kbd "M-?") 'ag-project))

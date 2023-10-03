@@ -50,6 +50,10 @@
  ;; Don't add unintentional new lines at the end of buffer
  next-line-add-newlines nil)
 
+;; Adjust gc-cons-threshold
+;; The default setting is too low for lsp-mode's needs due to the fact that client/server communication generates a lot of memory/garbage
+(setq gc-cons-threshold 100000000)
+
 ;; Always end a file with a newline
 ;;require-final-newline t
 
@@ -68,6 +72,21 @@
 (global-subword-mode 1)
 (with-eval-after-load 'subword
   (diminish 'subword-mode))
+
+;; Company mode
+(global-company-mode 1)
+(with-eval-after-load 'company
+  (setq company-idle-delay 0.3)
+  (setq company-show-numbers t)
+  (diminish 'company-mode))
+
+;; Telephone line mode
+(setq telephone-line-primary-left-separator 'telephone-line-cubed-left
+      telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-left
+      telephone-line-primary-right-separator 'telephone-line-cubed-right
+      telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-right)
+(setq telephone-line-height 24
+      telephone-line-evil-use-short-tag t)
 
 ;; hide eldoc minor mode
 (with-eval-after-load 'eldoc

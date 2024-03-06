@@ -68,7 +68,8 @@
 (require 'init-grep)
 (require 'init-tramp)
 (require 'init-flycheck)
-(require 'init-eglot)
+(require 'init-lsp)
+;;(require 'init-eglot)
 (require 'prisma-mode)
 
 ;; programming style
@@ -121,7 +122,23 @@
 
 (require 'ws-butler)
 (add-hook 'prog-mode-hook #'ws-butler-mode)
-
 (provide 'init)
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(sanityinc-tomorrow-night))
+ '(lsp-java-java-path
+   "/Users/tranchen/Library/Java/JavaVirtualMachines/corretto-17.0.7/Contents/Home/bin/java")
+ '(package-selected-packages
+   '(telephone-line company-tabnine helm-lsp lsp-ui lsp-java lsp-mode yasnippet-snippets yasnippet-classic-snippets yaml ws-butler writeroom-mode whitespace-cleanup-mode which-key wgrep web-mode vterm vlf typescript-mode treemacs toml-mode terraform-mode tagedit switch-window spinner skewer-less sass-mode rust-mode rjsx-mode rainbow-mode rainbow-delimiters prettier-js pip-requirements paredit page-break-lines origami org-pomodoro org-cliplink orderless nvm ns-auto-titlebar nixpkgs-fmt nix-sandbox nix-mode nix-buffer move-dup mmm-mode markdown-mode magit macrostep kind-icon json-mode js2-refactor js-doc js-comint ipretty immortal-scratch ido-completing-read+ highlight-quoted helm-projectile grab-mac-link goto-line-preview git-timemachine git-blamed fullframe flycheck-rust flycheck-package flycheck-flow flycheck-color-mode-line flex-isearch expand-region exec-path-from-shell elisp-slime-nav eglot-java dockerfile-mode docker-compose-mode docker diredfl dired-single dimmer diminish diff-hl default-text-scale dash-at-point csv-mode css-eldoc corfu consult-eglot color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized color-theme-modern cl-libify cask-mode beacon auto-compile aggressive-indent add-node-modules-path))
+ '(warning-suppress-log-types '(((tar link)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

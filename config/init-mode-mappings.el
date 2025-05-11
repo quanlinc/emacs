@@ -13,6 +13,8 @@
 ;;(add-to-list 'auto-mode-alist '(".js$" . angular-mode))
 (add-to-list 'auto-mode-alist '(".java$" . java-mode))
 ;; (add-to-list 'auto-mode-alist '(".htm$" . html-mode))
+
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 ;; org mode
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\)$" . org-mode))
 

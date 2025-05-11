@@ -78,6 +78,7 @@
 (require 'init-csv)
 (require 'init-java)
 (require 'init-javascript)
+(require 'init-dart)
 (require 'init-jsdoc)
 (require 'init-python)
 (require 'init-terraform)
@@ -86,6 +87,8 @@
 (require 'init-toml)
 (require 'init-rust)
 (require 'init-docker)
+
+(require 'init-lsp)
 
 ;; org mode
 (require 'init-org)

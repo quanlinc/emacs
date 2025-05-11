@@ -2,6 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+;;------------------
+;; Encoding
+;;------------------
+(set-default-coding-systems 'utf-8)
+(prefer-coding-system 'utf-8)
+
 ;;-------------------------
 ;; Personal preferences
 ;;-------------------------

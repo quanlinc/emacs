@@ -7,6 +7,7 @@
 (require-package 'lsp-ui)
 (require-package 'lsp-treemacs)
 (require-package 'helm-lsp)
+(require-package 'lsp-dart)
 
 (require 'lsp-mode)
 (require 'lsp-ui)
@@ -18,6 +19,7 @@
 (add-hook 'typescript-mode-hook 'lsp)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'typescript-mode-hook 'flycheck-mode)
+(add-hook 'dart-mode-hook 'lsp)
 
 (after-load 'lsp-ui
   (setq lsp-ui-doc-enable t
@@ -35,6 +37,7 @@
 ;; Increase the amount of data Emacs reads from the process
 ;; The default 4k is too low that causes certain process to crash, eslint as an example
 (setq read-process-output-max (* 1024 1024)) ;; 1mb
+(setq gc-cons-threshold (* 100 1024 1024))
 
 (setq lsp-eslint-enable 0)
 
